@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
+   <children>
+      <AnchorPane prefHeight="525.0" prefWidth="270.0" style="-fx-background-color: #CBCBCB;">
+         <children>
+            <AnchorPane prefHeight="525.0" prefWidth="40.0" style="-fx-background-color: #000000;">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="3.0" layoutY="313.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../../../images/products.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1.0" layoutY="169.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../../../images/users.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1.0" layoutY="239.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../../../images/muro.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1.0" layoutY="384.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../../../images/logout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="3.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../images/home.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect></AnchorPane>
+            <Button fx:id="buttonVendedores" layoutX="59.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#vendedores" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Vendedores" textFill="WHITE" />
+            <Button layoutX="59.0" layoutY="242.0" mnemonicParsing="false" onMouseClicked="#muro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
+            <Button fx:id="buttonMisProductos" layoutX="59.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#misProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
+            <Text layoutX="70.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Bienvenido!">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="buttonLogOut" layoutX="59.0" layoutY="383.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </children>
+</AnchorPane>
