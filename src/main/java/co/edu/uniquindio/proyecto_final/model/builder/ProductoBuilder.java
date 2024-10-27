@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyecto_final.model.builder;
 
-import co.edu.uniquindio.proyecto_final.model.EEstado;
+import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 
 public class ProductoBuilder {
@@ -8,7 +8,7 @@ public class ProductoBuilder {
     public String imagen;
     public String categoria;
     public String precio;
-    public EEstado estado;
+    public Estado estado;
 
     public ProductoBuilder nombre(String nombre) {
         this.nombre = nombre;
@@ -26,7 +26,7 @@ public class ProductoBuilder {
         this.precio = precio;
         return this;
     }
-    public ProductoBuilder estado(EEstado estado) {
+    public ProductoBuilder estado(Estado estado) {
         this.estado = estado;
         return this;
     }

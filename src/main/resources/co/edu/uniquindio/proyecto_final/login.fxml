@@ -9,13 +9,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.LoginViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.LoginViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="220.0" style="-fx-background-color: #000000;">
          <children>
             <ImageView fitHeight="210.0" fitWidth="185.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../images/shopingkart.png" />
+                  <Image url="@../images/shopingkart.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="31.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MarketPlace">
@@ -35,13 +35,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="371.0" layoutY="150.0" prefHeight="26.0" prefWidth="185.0" promptText="Usuario" />
-      <TextField layoutX="371.0" layoutY="201.0" prefHeight="26.0" prefWidth="185.0" promptText="Contraseña" />
-      <Button fx:id="entrarLoginButton" layoutX="282.0" layoutY="267.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#validarUsuario" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Entrar" />
-      <Button fx:id="cancelarLoginButton" layoutX="282.0" layoutY="314.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Cancelar" />
+      <TextField fx:id="usuarioTxt" layoutX="371.0" layoutY="150.0" prefHeight="26.0" prefWidth="185.0" promptText="Usuario" />
+      <TextField fx:id="contrasenaTxt" layoutX="371.0" layoutY="201.0" prefHeight="26.0" prefWidth="185.0" promptText="Contraseña" />
+      <Button fx:id="entrarLoginButton" layoutX="282.0" layoutY="267.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE" />
+      <Button fx:id="cancelarLoginButton" layoutX="282.0" layoutY="314.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Cancelar" textFill="WHITE" />
       <ImageView fitHeight="85.0" fitWidth="185.0" layoutX="338.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../images/user.png" />
+            <Image url="@../images/user.png" />
          </image>
       </ImageView>
    </children>

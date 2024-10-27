@@ -35,7 +35,24 @@ public class VendedorViewController {
     private Button buttonVendedores;
 
     @FXML
-    void onCerrarSesion(MouseEvent event) {}
+    void onCerrarSesion(MouseEvent event) {
+        loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
+    }
+
+    @FXML
+    private void loadStage(String url, MouseEvent event) {
+        try {
+            Window window = ((javafx.scene.Node) (event.getSource())).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Scene scene = new Scene(root);
+            Stage newStage = (Stage) window;
+            newStage.setScene(scene);
+            newStage.show();
+
+        } catch (Exception e) {
+            new Exception("Error al cambiar de escena");
+        }
+    }
 
 
     @FXML

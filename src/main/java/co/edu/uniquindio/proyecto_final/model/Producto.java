@@ -9,5 +9,5 @@ public class Producto {
     public String imagen;
     public String categoria;
     public String precio;
-    public EEstado estado;
+    public Estado estado;
 }
