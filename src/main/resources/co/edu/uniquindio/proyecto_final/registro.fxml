@@ -66,12 +66,12 @@
             </font>
         </Label>
         <TextField fx:id="confirmarContrasenaField" layoutX="92.0" layoutY="511.0" prefWidth="336.0" promptText="Confirmar Contraseña" />
-        <Button fx:id="registroButton" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Registro" textFill="WHITE">
+        <Button fx:id="registroButton" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" onAction="#onRegistro" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Registro" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="cerrarButton" layoutX="92.0" layoutY="601.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Cerrar" textFill="WHITE">
+        <Button fx:id="cerrarButton" layoutX="92.0" layoutY="601.0" mnemonicParsing="false" onAction="#onCerrar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Cerrar" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>

@@ -1,12 +1,8 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.Event;
-import javafx.scene.Node;
-import co.edu.uniquindio.proyecto_final.controller.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,10 +27,13 @@ public class LoginViewController {
     private Button cancelarLoginButton;
 
     @FXML
-    private Label contrasenaField;
+    private Button entrarLoginButton;
 
     @FXML
-    private Button entrarLoginButton;
+    private Button registroButton;
+
+    @FXML
+    private Label contrasenaField;
 
     @FXML
     private Label usuarioField;
@@ -46,15 +45,25 @@ public class LoginViewController {
     private TextField contrasenaTxt;
 
     @FXML
-    private void iniciarSesion(ActionEvent event) {
+    void onCancelar(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void onIniciarSesion(ActionEvent event) {
         String usuario = usuarioTxt.getText();
         String contrasena = contrasenaTxt.getText();
 
         if (usuario.equals("vendedor") && contrasena.equals("1234")) {
-            loadStage("/co/edu/uniquindio/proyecto_final/vendedor-view.fxml", event);
+            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
         } else {
             mostrarAlertaCredencialesInvalidas();
         }
+    }
+
+    @FXML
+    void onResgistrarse(ActionEvent event) {
+        loadStage("/co/edu/uniquindio/proyecto_final/registro.fxml", event);
     }
 
     @FXML
