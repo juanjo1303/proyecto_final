@@ -26,13 +26,13 @@ public class RegistroViewController {
     private URL location;
 
     @FXML
+    private ImageView escudoImageView;
+
+    @FXML
     private TextField apellidoTextField;
 
     @FXML
     private TextField cedulaTextField;
-
-    @FXML
-    private Button cerrarButton;
 
     @FXML
     private TextField confirmarContrasenaField;
@@ -41,13 +41,7 @@ public class RegistroViewController {
     private TextField direccionTextField;
 
     @FXML
-    private ImageView escudoImageView;
-
-    @FXML
     private TextField nombreTextField;
-
-    @FXML
-    private Button registroButton;
 
     @FXML
     private TextField setContrasenaField;
@@ -56,19 +50,19 @@ public class RegistroViewController {
     private TextField usuarioTextField;
 
     @FXML
+    private Button registroButton;
+
+    @FXML
+    private Button cerrarButton;
+
+    @FXML
     void onCerrar(ActionEvent event) {
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
     }
 
     @FXML
     void onRegistro(ActionEvent event) {
-        if (mostrarAlertaUsuario() == true){
-            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
-        }
-        else {
-            loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
-        }
-
+        validacionFinal(event);
     }
 
     @FXML
@@ -84,6 +78,51 @@ public class RegistroViewController {
         } catch (Exception e) {
             new Exception("Error al cambiar de escena");
         }
+    }
+
+    private void validacionFinal(Event event) {
+        if (camposVacios() == false){
+            confirmacion(event);
+        }
+        else{
+            alertaCamposVacios();
+        }
+    }
+
+    private boolean camposVacios(){
+        String nombre = nombreTextField.getText();
+        String apellido = apellidoTextField.getText();
+        String cedula = cedulaTextField.getText();
+        String direccion = direccionTextField.getText();
+        String usuario = usuarioTextField.getText();
+        String contrasena = setContrasenaField.getText();
+        String confirmacionContrasena = confirmarContrasenaField.getText();
+
+        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() ||
+                direccion.isEmpty() || usuario.isEmpty() || contrasena.isEmpty() ||
+                confirmacionContrasena.isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void confirmacion(Event event){
+        if (mostrarAlertaUsuario() == true){
+            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
+        }
+        else {
+            loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
+        }
+    }
+
+    private void alertaCamposVacios(){
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error de registro");
+        alerta.setHeaderText("Campos vacios");
+        alerta.setContentText("Por favor verifica tus datos.");
+        alerta.showAndWait();
     }
 
     private boolean mostrarAlertaUsuario() {

@@ -25,30 +25,29 @@
             </Text>
          </children>
       </AnchorPane>
-      <Label fx:id="usuarioField" layoutX="290.0" layoutY="125.0" text="Usuario">
+      <Label fx:id="usuarioField" layoutX="290.0" layoutY="135.0" text="Usuario">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="contrasenaField" layoutX="278.0" layoutY="165.0" text="Contraseña">
+      <Label fx:id="contrasenaField" layoutX="278.0" layoutY="175.0" text="Contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="usuarioTxt" layoutX="363.0" layoutY="122.0" prefHeight="26.0" prefWidth="157.0" promptText="Usuario" />
-      <TextField fx:id="contrasenaTxt" layoutX="363.0" layoutY="162.0" prefHeight="26.0" prefWidth="158.0" promptText="Contraseña" />
-      <Button fx:id="entrarLoginButton" layoutX="283.0" layoutY="210.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onIniciarSesion" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE" />
-      <Button fx:id="cancelarLoginButton" layoutX="283.0" layoutY="252.0" mnemonicParsing="false" onAction="#onCancelar" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Cancelar" textFill="WHITE" />
+      <TextField fx:id="usuarioTxt" layoutX="363.0" layoutY="132.0" prefHeight="26.0" prefWidth="157.0" promptText="Usuario" />
+      <TextField fx:id="contrasenaTxt" layoutX="363.0" layoutY="172.0" prefHeight="26.0" prefWidth="158.0" promptText="Contraseña" />
+      <Button fx:id="entrarLoginButton" layoutX="283.0" layoutY="220.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onIniciarSesion" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE" />
       <ImageView fitHeight="85.0" fitWidth="185.0" layoutX="339.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user.png" />
          </image>
       </ImageView>
-      <Label fx:id="usuarioField1" layoutX="274.0" layoutY="298.0" text="¿Eres nuevo?">
+      <Label fx:id="usuarioField1" layoutX="274.0" layoutY="279.0" text="¿Eres nuevo?">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="registroButton" layoutX="283.0" layoutY="332.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onResgistrarse" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Crear cuenta" textFill="WHITE" />
+      <Button fx:id="registroButton" layoutX="283.0" layoutY="313.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onResgistrarse" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Crear cuenta" textFill="WHITE" />
    </children>
 </AnchorPane>

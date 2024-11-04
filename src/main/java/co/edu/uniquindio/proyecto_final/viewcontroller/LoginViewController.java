@@ -24,9 +24,6 @@ public class LoginViewController {
     private URL location;
 
     @FXML
-    private Button cancelarLoginButton;
-
-    @FXML
     private Button entrarLoginButton;
 
     @FXML
@@ -43,11 +40,6 @@ public class LoginViewController {
 
     @FXML
     private TextField contrasenaTxt;
-
-    @FXML
-    void onCancelar(ActionEvent event) {
-
-    }
 
     @FXML
     private void onIniciarSesion(ActionEvent event) {
@@ -91,12 +83,10 @@ public class LoginViewController {
 
     @FXML
     void initialize() {
-        assert cancelarLoginButton != null : "fx:id=\"cancelarLoginButton\" was not injected: check your FXML file 'login.fxml'.";
         assert contrasenaField != null : "fx:id=\"contrasenaField\" was not injected: check your FXML file 'login.fxml'.";
         assert contrasenaTxt != null : "fx:id=\"contrasenaTxt\" was not injected: check your FXML file 'login.fxml'.";
         assert entrarLoginButton != null : "fx:id=\"entrarLoginButton\" was not injected: check your FXML file 'login.fxml'.";
         assert usuarioField != null : "fx:id=\"usuarioField\" was not injected: check your FXML file 'login.fxml'.";
         assert usuarioTxt != null : "fx:id=\"usuarioTxt\" was not injected: check your FXML file 'login.fxml'.";
-
     }
 }
