@@ -82,7 +82,11 @@ public class RegistroViewController {
 
     private void validacionFinal(Event event) {
         if (camposVacios() == false){
-            confirmacion(event);
+            if(contrasenaDiferente() == false){
+                confirmacion(event);}
+            else{
+                alertaContrasena();
+            }
         }
         else{
             alertaCamposVacios();
@@ -108,6 +112,18 @@ public class RegistroViewController {
         }
     }
 
+    private boolean contrasenaDiferente(){
+        String contrasena = setContrasenaField.getText();
+        String confirmacionContrasena = confirmarContrasenaField.getText();
+
+        if(contrasena.equals(confirmacionContrasena)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     private void confirmacion(Event event){
         if (mostrarAlertaUsuario() == true){
             loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
@@ -115,6 +131,14 @@ public class RegistroViewController {
         else {
             loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
         }
+    }
+
+    private void alertaContrasena(){
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Contraseña incorrecta");
+        alerta.setHeaderText("Contraseñas diferentes");
+        alerta.setContentText("Por favor verifica tu contraseña.");
+        alerta.showAndWait();
     }
 
     private void alertaCamposVacios(){
