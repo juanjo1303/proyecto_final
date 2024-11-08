@@ -14,6 +14,7 @@ public class Vendedor {
     private String usuario;
     private String contrasena;
     private LinkedList<Producto> listProducto;
+    private LinkedList<Vendedor> listVendedores;
 
     public static VendedorBuilder builder() {return new VendedorBuilder();}
 }
