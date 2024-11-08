@@ -12,6 +12,7 @@ public class VendedorBuilder {
     private String usuario;
     private String contrasena;
     private LinkedList<Producto> listProducto;
+    private LinkedList<Vendedor> listVendedor;
 
     public VendedorBuilder nombre(String nombre) {
         this.nombre = nombre;
@@ -41,6 +42,12 @@ public class VendedorBuilder {
         this.listProducto = listProducto;
         return this;
     }
+
+    public VendedorBuilder listVendedor(LinkedList<Vendedor> listVendedor) {
+        this.listVendedor = listVendedor;
+        return this;
+    }
+
     public Vendedor build() {return new Vendedor(
             nombre,
             apellido,
@@ -48,5 +55,6 @@ public class VendedorBuilder {
             direccion,
             usuario,
             contrasena,
-            listProducto);}
+            listProducto,
+            listVendedor);}
 }
