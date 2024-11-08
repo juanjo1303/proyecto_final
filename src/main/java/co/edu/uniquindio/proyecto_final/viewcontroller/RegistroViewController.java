@@ -3,6 +3,10 @@ package co.edu.uniquindio.proyecto_final.viewcontroller;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.proyecto_final.controller.RegistroController;
+import co.edu.uniquindio.proyecto_final.mapping.dto.DtoVendedor;
+import co.edu.uniquindio.proyecto_final.model.builder.VendedorBuilder;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -18,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class RegistroViewController {
+    private RegistroController registroController;
+    private DtoVendedor vendedor;
 
     @FXML
     private ResourceBundle resources;
@@ -83,7 +89,11 @@ public class RegistroViewController {
     private void validacionFinal(Event event) {
         if (camposVacios() == false){
             if(contrasenaIguales() == true){
-                confirmacion(event);}
+                confirmacion(event);
+                vendedor = buildDtoVendedor();
+                registroController.crearVendedor(vendedor);
+            }
+
             else{
                 alertaContrasena();
             }
@@ -93,7 +103,12 @@ public class RegistroViewController {
         }
     }
 
+    private DtoVendedor buildDtoVendedor() {
+        return new DtoVendedor(nombreTextField.getText(),apellidoTextField.getText(),cedulaTextField.getText(),direccionTextField.getText(),usuarioTextField.getText(),setContrasenaField.getText());
+    }
+
     private boolean camposVacios(){
+
         String nombre = nombreTextField.getText();
         String apellido = apellidoTextField.getText();
         String cedula = cedulaTextField.getText();
@@ -106,6 +121,7 @@ public class RegistroViewController {
                 direccion.isEmpty() || usuario.isEmpty() || contrasena.isEmpty() ||
                 confirmacionContrasena.isEmpty()) {
             return true;
+
         }
         else {
             return false;
@@ -174,7 +190,7 @@ public class RegistroViewController {
         assert registroButton != null : "fx:id=\"registroButton\" was not injected: check your FXML file 'registro.fxml'.";
         assert setContrasenaField != null : "fx:id=\"setContrasenaField\" was not injected: check your FXML file 'registro.fxml'.";
         assert usuarioTextField != null : "fx:id=\"usuarioTextField\" was not injected: check your FXML file 'registro.fxml'.";
-
+        registroController = new RegistroController();
     }
 
 }
