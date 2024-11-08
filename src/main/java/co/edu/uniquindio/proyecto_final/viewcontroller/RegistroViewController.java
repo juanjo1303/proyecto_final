@@ -82,7 +82,7 @@ public class RegistroViewController {
 
     private void validacionFinal(Event event) {
         if (camposVacios() == false){
-            if(contrasenaDiferente() == false){
+            if(contrasenaIguales() == true){
                 confirmacion(event);}
             else{
                 alertaContrasena();
@@ -112,7 +112,7 @@ public class RegistroViewController {
         }
     }
 
-    private boolean contrasenaDiferente(){
+    private boolean contrasenaIguales(){
         String contrasena = setContrasenaField.getText();
         String confirmacionContrasena = confirmarContrasenaField.getText();
 
@@ -136,7 +136,7 @@ public class RegistroViewController {
     private void alertaContrasena(){
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle("Contraseña incorrecta");
-        alerta.setHeaderText("Contraseñas diferentes");
+        alerta.setHeaderText("La contraseña y la confirmacion son diferentes.");
         alerta.setContentText("Por favor verifica tu contraseña.");
         alerta.showAndWait();
     }
