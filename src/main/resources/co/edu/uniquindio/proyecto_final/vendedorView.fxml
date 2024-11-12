@@ -116,7 +116,7 @@
                         </ImageView>
                       <AnchorPane layoutX="23.0" layoutY="53.0" minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="582.0">
                            <children>
-                              <ScrollPane layoutX="-1.0" layoutY="-4.0" prefHeight="539.0" prefWidth="584.0">
+                              <ScrollPane layoutX="-1.0" layoutY="-4.0" prefHeight="540.0" prefWidth="580.0">
                                  <content>
                                     <GridPane fx:id="gridProductos" prefHeight="0.0" prefWidth="582.0">
                                       <columnConstraints>
