@@ -1,11 +1,15 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,7 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class LoginViewController {
+public class LoginViewController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        vendedorController = new VendedorController();
+    }
+    VendedorController vendedorController;
 
     @FXML
     private ResourceBundle resources;
@@ -42,12 +51,20 @@ public class LoginViewController {
     private TextField contrasenaTxt;
 
     @FXML
-    private void onIniciarSesion(ActionEvent event) {
+    private void onIniciarSesion(ActionEvent event) throws IOException {
         String usuario = usuarioTxt.getText();
         String contrasena = contrasenaTxt.getText();
+        //no olvidar hacer el recorrido al model, para buscar credenciales alla
+        if (usuario.equals("user") && contrasena.equals("1234")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
+            Scene scene = new Scene(loader.load(), 900,600);
+            VendedorViewController controller = loader.getController();
+            controller.setVendedor(vendedorController.getVendedor("0000"));
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
 
-        if (usuario.equals("vendedor") && contrasena.equals("1234")) {
-            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
+            //loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
         } else {
             mostrarAlertaCredencialesInvalidas();
         }

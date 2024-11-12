@@ -5,8 +5,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto_final.controller.RegistroController;
-import co.edu.uniquindio.proyecto_final.mapping.dto.DtoVendedor;
-import co.edu.uniquindio.proyecto_final.model.builder.VendedorBuilder;
+import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -23,7 +22,7 @@ import javafx.stage.Window;
 
 public class RegistroViewController {
     private RegistroController registroController;
-    private DtoVendedor vendedor;
+    private VendedorDto vendedor;
 
     @FXML
     private ResourceBundle resources;
@@ -103,8 +102,8 @@ public class RegistroViewController {
         }
     }
 
-    private DtoVendedor buildDtoVendedor() {
-        return new DtoVendedor(nombreTextField.getText(),apellidoTextField.getText(),cedulaTextField.getText(),direccionTextField.getText(),usuarioTextField.getText(),setContrasenaField.getText());
+    private VendedorDto buildDtoVendedor() {
+        return new VendedorDto(nombreTextField.getText(),apellidoTextField.getText(),cedulaTextField.getText(),direccionTextField.getText(),usuarioTextField.getText(),setContrasenaField.getText());
     }
 
     private boolean camposVacios(){

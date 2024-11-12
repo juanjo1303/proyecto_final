@@ -54,7 +54,5 @@ public class VendedorBuilder {
             cedula,
             direccion,
             usuario,
-            contrasena,
-            listProducto,
-            listVendedor);}
+            contrasena);}
 }

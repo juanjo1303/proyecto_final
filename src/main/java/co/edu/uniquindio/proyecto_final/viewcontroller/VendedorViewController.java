@@ -1,22 +1,36 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.proyecto_final.controller.VendedorController;
+import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
+import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class VendedorViewController {
+public class VendedorViewController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        vendedorController = new VendedorController();
+    }
 
+    private VendedorDto vendedor;
+    VendedorController vendedorController;
     @FXML
     private ResourceBundle resources;
 
@@ -55,6 +69,8 @@ public class VendedorViewController {
 
     @FXML
     private Tab tabVendedores;
+    @FXML
+    private GridPane gridProductos;
 
     @FXML
     void onVendedores(ActionEvent event) {
@@ -67,10 +83,23 @@ public class VendedorViewController {
     }
 
     @FXML
-    void onProductos(ActionEvent event) {
+    void onProductos(ActionEvent event) throws IOException {
         tabPane.getSelectionModel().select(tabProductos);
+        mostrarPublicaciones();
     }
-
+    public void mostrarPublicaciones() throws IOException {
+        int columnas = 0;
+        int filas = 0;
+        List<ProductoDto> dto = vendedorController.getListaProductosDto(vendedor.cedula());
+        for (int i = 0; i < dto.size(); i++) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/producto-view.fxml"));
+            AnchorPane anchorPane = loader.load();
+            ProductoViewController controller = loader.getController();
+            controller.setData(dto.get(i));
+            gridProductos.add(anchorPane, columnas, filas);
+            filas++;
+        }
+    }
     @FXML
     void onCerrarSesion(ActionEvent event) {
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
@@ -107,5 +136,12 @@ public class VendedorViewController {
 
     }
 
+    public VendedorDto getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(VendedorDto vendedor) {
+        this.vendedor = vendedor;
+    }
 }
 
