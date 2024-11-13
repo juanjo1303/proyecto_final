@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.scene.layout.GridPane;
 
 public class VendedorViewController implements Initializable {
     @Override
@@ -69,8 +70,9 @@ public class VendedorViewController implements Initializable {
 
     @FXML
     private Tab tabVendedores;
+
     @FXML
-    private GridPane gridProductos;
+    private GridPane gridPaneProductos;
 
     @FXML
     void onVendedores(ActionEvent event) {
@@ -87,19 +89,26 @@ public class VendedorViewController implements Initializable {
         tabPane.getSelectionModel().select(tabProductos);
         mostrarPublicaciones();
     }
+
     public void mostrarPublicaciones() throws IOException {
         int columnas = 0;
         int filas = 0;
-        List<ProductoDto> dto = vendedorController.getListaProductosDto(vendedor.cedula());
-        for (int i = 0; i < dto.size(); i++) {
+        gridPaneProductos.getChildren().clear();
+        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.getCedula());
+        for (ProductoDto producto : productos) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/producto-view.fxml"));
             AnchorPane anchorPane = loader.load();
             ProductoViewController controller = loader.getController();
-            controller.setData(dto.get(i));
-            gridProductos.add(anchorPane, columnas, filas);
-            filas++;
+            controller.setData(producto);
+            gridPaneProductos.add(anchorPane, columnas, filas);
+            columnas++;
+            if (columnas > 1) {
+                columnas = 0;
+                filas++;
+            }
         }
     }
+
     @FXML
     void onCerrarSesion(ActionEvent event) {
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
@@ -129,6 +138,7 @@ public class VendedorViewController implements Initializable {
         assert buttonMisProductos != null : "fx:id=\"buttonMisProductos\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert buttonMuro != null : "fx:id=\"buttonMuro\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert buttonVendedores != null : "fx:id=\"buttonVendedores\" was not injected: check your FXML file 'vendedorView.fxml'.";
+        assert gridPaneProductos != null : "fx:id=\"gridProductos\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert tabMuro != null : "fx:id=\"tabMuro\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert tabPane != null : "fx:id=\"tabPane\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert tabProductos != null : "fx:id=\"tabProductos\" was not injected: check your FXML file 'vendedorView.fxml'.";
