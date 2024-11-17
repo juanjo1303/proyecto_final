@@ -21,15 +21,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class LoginViewController /*implements Initializable*/ {
+public class LoginViewController implements Initializable{
     private LoginController loginController;
     private UsuarioDto usuarioDto;
 
-    /*@Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vendedorController = new VendedorController();
+        loginController = new LoginController();
     }
-    VendedorController vendedorController;*/
+    VendedorController vendedorController;
 
     @FXML
     private ResourceBundle resources;
@@ -62,14 +63,14 @@ public class LoginViewController /*implements Initializable*/ {
         UsuarioDto usuarioDto1 = new UsuarioDto(usuario,contrasena);
 
         if (loginController.verificarCredenciales(usuarioDto1)){
-            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
             Scene scene = new Scene(loader.load(), 900,600);
             VendedorViewController controller = loader.getController();
             controller.setVendedor(vendedorController.getVendedor("0000"));
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.show();*/
-            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
+            stage.show();
+            //loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
         } else {
             mostrarAlertaCredencialesInvalidas();
         }

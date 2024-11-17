@@ -18,6 +18,11 @@ public class RegistroController implements IRegistroControllerServices {
     }
 
     @Override
+    public boolean verificarCedulaExistente(VendedorDto vendedor) {
+        return modelFactory.verificarCedulaExistente(vendedor);
+    }
+
+    @Override
     public boolean crearVendedor(VendedorDto vendedor) {
         return modelFactory.crearVendedor(vendedor);
     }

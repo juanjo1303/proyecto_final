@@ -74,8 +74,16 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
+    public boolean verificarCedulaExistente(VendedorDto vendedor) {
+        if(marketPlace.verificarCedulaVendedor(vendedor.cedula())){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean verificarVendedorExistente(VendedorDto vendedor) {
-        if(marketPlace.verificarUserVendedor(vendedor.usuario()) /*&& marketPlace.verificarCedulaVendedor(vendedor.cedula())*/){
+        if(marketPlace.verificarUserVendedor(vendedor.usuario())){
             return true;
         }
         return false;

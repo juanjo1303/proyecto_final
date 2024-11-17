@@ -89,9 +89,14 @@ public class RegistroViewController {
         if (camposVacios() == false){
             if(contrasenaIguales() == true){
                 if(verificarVendedorExistente() == true) {
-                    confirmacion(event);
-                    vendedor = buildDtoVendedor();
-                    registroController.crearVendedor(vendedor);
+                    if(verificarCedulaRegistrada() == true){
+                        confirmacion(event);
+                        vendedor = buildDtoVendedor();
+                        registroController.crearVendedor(vendedor);
+                    }
+                    else{
+                        alertaCedulaRegistrada();
+                    }
                 }
                 else{
                     alertaVendedorExistente();
@@ -105,6 +110,19 @@ public class RegistroViewController {
         else{
             alertaCamposVacios();
         }
+    }
+
+    private boolean verificarCedulaRegistrada() {
+        vendedor = buildDtoVendedor();
+        return registroController.verificarCedulaExistente(vendedor);
+    }
+
+    private void alertaCedulaRegistrada() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Cedula Registrada");
+        alerta.setHeaderText("La cedula ya esta registrada");
+        alerta.setContentText("Por favor inicie sesion con sus credenciales");
+        alerta.showAndWait();
     }
 
     private void alertaVendedorExistente() {
