@@ -17,6 +17,18 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
 
 
     @Override
+    public Vendedor vendedorDtoToVendedor(VendedorDto vendedorDto) {
+        return Vendedor.builder()
+                .nombre(vendedorDto.nombre())
+                .apellido(vendedorDto.apellido())
+                .cedula(vendedorDto.cedula())
+                .direccion(vendedorDto.direccion())
+                .usuario(vendedorDto.usuario())
+                .contrasena(vendedorDto.contrasena())
+                .build();
+    }
+
+    @Override
     public VendedorDto VendedorToVendedorDto(Vendedor vendedor) {
         VendedorDto dto = new VendedorDto(vendedor.getNombre(), vendedor.getApellido(), vendedor.getCedula(), vendedor.getDireccion(), vendedor.getUsuario(), vendedor.getContrasena());
         return dto;

@@ -16,7 +16,7 @@ public class Vendedor {
         listVendedores = new LinkedList<>();
     }
 
-    public Vendedor(String nombre, String apellido, String cedula, String usuario, String direccion, String contrasena) {
+    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;

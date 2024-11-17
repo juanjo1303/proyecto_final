@@ -8,6 +8,7 @@ import co.edu.uniquindio.proyecto_final.model.Vendedor;
 import java.util.List;
 
 public interface IMarketPlaceMappingImplServices {
+    Vendedor vendedorDtoToVendedor(VendedorDto vendedorDto);
     VendedorDto VendedorToVendedorDto(Vendedor vendedor);
     List<ProductoDto> ProductosToProductosDto(List<Producto> productos);
     ProductoDto ProductoToProductoDto(Producto producto);

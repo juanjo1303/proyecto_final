@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.proyecto_final.controller.LoginController;
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
+import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,12 +21,15 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class LoginViewController implements Initializable {
-    @Override
+public class LoginViewController /*implements Initializable*/ {
+    private LoginController loginController;
+    private UsuarioDto usuarioDto;
+
+    /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vendedorController = new VendedorController();
     }
-    VendedorController vendedorController;
+    VendedorController vendedorController;*/
 
     @FXML
     private ResourceBundle resources;
@@ -54,17 +59,17 @@ public class LoginViewController implements Initializable {
     private void onIniciarSesion(ActionEvent event) throws IOException {
         String usuario = usuarioTxt.getText();
         String contrasena = contrasenaTxt.getText();
-        //no olvidar hacer el recorrido al model, para buscar credenciales alla
-        if (usuario.equals("user") && contrasena.equals("1234")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
+        UsuarioDto usuarioDto1 = new UsuarioDto(usuario,contrasena);
+
+        if (loginController.verificarCredenciales(usuarioDto1)){
+            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
             Scene scene = new Scene(loader.load(), 900,600);
             VendedorViewController controller = loader.getController();
             controller.setVendedor(vendedorController.getVendedor("0000"));
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.show();
-
-            //loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
+            stage.show();*/
+            loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
         } else {
             mostrarAlertaCredencialesInvalidas();
         }
@@ -105,5 +110,6 @@ public class LoginViewController implements Initializable {
         assert entrarLoginButton != null : "fx:id=\"entrarLoginButton\" was not injected: check your FXML file 'login.fxml'.";
         assert usuarioField != null : "fx:id=\"usuarioField\" was not injected: check your FXML file 'login.fxml'.";
         assert usuarioTxt != null : "fx:id=\"usuarioTxt\" was not injected: check your FXML file 'login.fxml'.";
+        loginController = new LoginController();
     }
 }

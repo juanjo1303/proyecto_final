@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto_final.model;
 
+import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -61,4 +63,47 @@ public class MarketPlace {
     public void setPublicaciones(LinkedList<Publicacion> publicaciones) {
         this.publicaciones = publicaciones;
     }
+    public boolean verificarUserVendedor(String usuario) {
+        Vendedor vendedor = null;
+        for(Vendedor vendedor1 : vendedores){
+            if(vendedor1.getUsuario().equals(usuario)){
+                vendedor = vendedor1;
+                break;
+            }
+        }
+
+            if(vendedor == null){
+                return true;
+            }
+            return false;
+        }
+
+    public boolean verificarCedulaVendedor(String cedula) {
+        Vendedor vendedor = null;
+        for(Vendedor vendedor1 : vendedores){
+            if(vendedor1.getCedula().equals(cedula)){
+                vendedor = vendedor1;
+                break;
+            }
+        }
+        if(vendedor == null){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean crearVendedor(Vendedor newVendedor) {
+        vendedores.add(newVendedor);
+        return true;
+    }
+
+    public boolean verificarCredenciales(UsuarioDto usuarioDto) {
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getUsuario().equals(usuarioDto.user()) && vendedor.getContrasena().equals(usuarioDto.pass())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

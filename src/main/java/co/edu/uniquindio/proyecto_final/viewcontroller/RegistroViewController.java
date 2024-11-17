@@ -88,9 +88,14 @@ public class RegistroViewController {
     private void validacionFinal(Event event) {
         if (camposVacios() == false){
             if(contrasenaIguales() == true){
-                confirmacion(event);
-                vendedor = buildDtoVendedor();
-                registroController.crearVendedor(vendedor);
+                if(verificarVendedorExistente() == true) {
+                    confirmacion(event);
+                    vendedor = buildDtoVendedor();
+                    registroController.crearVendedor(vendedor);
+                }
+                else{
+                    alertaVendedorExistente();
+                }
             }
 
             else{
@@ -102,8 +107,21 @@ public class RegistroViewController {
         }
     }
 
+    private void alertaVendedorExistente() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Vendedor Existente");
+        alerta.setHeaderText("El usuario ya existe");
+        alerta.setContentText("Por favor ingresa otro usuario");
+        alerta.showAndWait();
+    }
+
     private VendedorDto buildDtoVendedor() {
         return new VendedorDto(nombreTextField.getText(),apellidoTextField.getText(),cedulaTextField.getText(),direccionTextField.getText(),usuarioTextField.getText(),setContrasenaField.getText());
+    }
+
+    private boolean verificarVendedorExistente(){
+        vendedor = buildDtoVendedor();
+        return registroController.verificarVendedorExistente(vendedor);
     }
 
     private boolean camposVacios(){

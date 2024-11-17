@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto_final.factory;
 
+import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.mappers.MarketPlaceMappingImpl;
@@ -47,6 +48,25 @@ public class ModelFactory implements IModelFactoryServices {
 
         marketPlace.getVendedores().add(vendedor9);
         return marketPlace;
+    }
+
+    @Override
+    public boolean verificarVendedorExistente(VendedorDto vendedor) {
+        if(marketPlace.verificarUserVendedor(vendedor.usuario()) /*&& marketPlace.verificarCedulaVendedor(vendedor.cedula())*/){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean verificarCredenciales(UsuarioDto usuarioDto) {
+        return marketPlace.verificarCredenciales(usuarioDto);
+    }
+
+    @Override
+    public boolean crearVendedor(VendedorDto vendedor) {
+            Vendedor newVendedor = mapper.vendedorDtoToVendedor(vendedor);
+            return marketPlace.crearVendedor(newVendedor);
     }
 
     @Override
