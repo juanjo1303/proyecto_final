@@ -1,7 +1,12 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -23,6 +28,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.*;
 
 public class VendedorViewController implements Initializable {
     @Override
@@ -60,6 +67,9 @@ public class VendedorViewController implements Initializable {
     private Button buttonVendedores;
 
     @FXML
+    private Button buttonReportes;
+
+    @FXML
     private Tab tabMuro;
 
     @FXML
@@ -73,6 +83,11 @@ public class VendedorViewController implements Initializable {
 
     @FXML
     private GridPane gridPaneProductos;
+
+    @FXML
+    void onReportes(ActionEvent event) {
+        exportarEstadisticas("Juan me la puede chupar","Daniel");
+    }
 
     @FXML
     void onVendedores(ActionEvent event) {
@@ -129,8 +144,31 @@ public class VendedorViewController implements Initializable {
         }
     }
 
+    public static void exportarEstadisticas(String contenidoEstadisticas, String usuario) {
+        String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String titulo = "Reporte de Estadísticas";
+        String contenidoReporte = String.format("%s\nFecha de exportación: %s\nUsuario: %s\n\n%s",
+                titulo, fecha, usuario, contenidoEstadisticas);
+        //para seleccionar la ruta del archivo
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar carpeta para guardar el reporte");
+        fileChooser.setSelectedFile(new File("reporte_estadisticas.txt"));
+
+        int resultado = fileChooser.showSaveDialog(null);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+                writer.write(contenidoReporte);
+                System.out.println("Reporte exportado exitosamente.");
+            } catch (IOException e) {
+                System.out.println("Error al exportar el reporte: " + e.getMessage());
+            }
+        }
+    }
+
     @FXML
     void initialize() {
+        assert buttonReportes != null : "fx:id=\"buttonReportes\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert anchorPaneMuro != null : "fx:id=\"anchorPaneMuro\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert anchorPaneProductos != null : "fx:id=\"anchorPaneProductos\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert anchorPaneVendedores != null : "fx:id=\"anchorPaneVendedores\" was not injected: check your FXML file 'vendedorView.fxml'.";

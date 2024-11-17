@@ -31,22 +31,45 @@ public class ModelFactory implements IModelFactoryServices {
 
     private static MarketPlace inicializarDatos() {
         MarketPlace marketPlace = new MarketPlace("abc");
-        Vendedor vendedor9 = new Vendedor();
-        vendedor9.setNombre("Pepe");
-        vendedor9.setApellido("Martin");
-        vendedor9.setCedula("0000");
-        vendedor9.setDireccion("alli");
-        vendedor9.setUsuario("user");
-        vendedor9.setContrasena("1234");
+        Vendedor vendedor0 = Vendedor.builder()
+                .nombre("Pepe")
+                .apellido("Martin")
+                .cedula("0000")
+                .direccion("Armenia")
+                .usuario("user")
+                .contrasena("1234")
+                .build();
 
-        Producto producto1 = new Producto("Carro", "/co/edu/uniquindio/images/carro.jpg", "Cualquier cosa", "100000000000 Dolar", Estado.PUBLICADO);
-        Producto producto2 = new Producto("Pollo", "/co/edu/uniquindio/images/pollo.jpg", "Comida", "500000 dolar", Estado.PUBLICADO);
-        Producto producto3 = new Producto("Bate", "/co/edu/uniquindio/images/bate.jpg", "Deporte", "9000000000 bolivares", Estado.PUBLICADO);
-        vendedor9.getListProducto().add(producto1);
-        vendedor9.getListProducto().add(producto2);
-        vendedor9.getListProducto().add(producto3);
+        Producto producto1 = Producto.builder()
+                .nombre("Carro")
+                .imagen("/co/edu/uniquindio/images/carro.jpg")
+                .categoria("Vehiculo")
+                .precio("$10000")
+                .estado(Estado.PUBLICADO)
+                .build();
 
-        marketPlace.getVendedores().add(vendedor9);
+        Producto producto2 = Producto.builder()
+                .nombre("Pollo")
+                .imagen("/co/edu/uniquindio/images/pollo.jpg")
+                .categoria("Comida")
+                .precio("$50")
+                .estado(Estado.PUBLICADO)
+                .build();
+
+        Producto producto3 = Producto.builder()
+                .nombre("Bate")
+                .imagen("/co/edu/uniquindio/images/bate.jpg")
+                .categoria("Deporte")
+                .precio("$900")
+                .estado(Estado.PUBLICADO)
+                .build();
+
+        vendedor0.getListProducto().add(producto1);
+        vendedor0.getListProducto().add(producto2);
+        vendedor0.getListProducto().add(producto3);
+
+        marketPlace.getVendedores().add(vendedor0);
+
         return marketPlace;
     }
 

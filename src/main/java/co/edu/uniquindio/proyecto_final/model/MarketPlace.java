@@ -16,6 +16,7 @@ public class MarketPlace {
     public MarketPlace(String nombre) {
         this.nombre = nombre;
     }
+
     public Vendedor getVendedor(String id) {
         for (Vendedor v : vendedores) {
             if (v.getCedula().equals(id)) {
@@ -24,14 +25,11 @@ public class MarketPlace {
         }
         return null;
     }
-    public List<Producto> getProductos(String id) {
-        for (Vendedor v : vendedores) {
-            if (v.getCedula().equals(id)) {
+    public LinkedList<Producto> getProductos(String id) {
+        Vendedor v = getVendedor(id);
                 return v.getListProducto();
             }
-        }
-        return null;
-    }
+
     public String getNombre() {
         return nombre;
     }

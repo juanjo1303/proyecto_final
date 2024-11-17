@@ -59,6 +59,7 @@
             <Button fx:id="buttonMuro" layoutX="25.0" layoutY="307.0" mnemonicParsing="false" onAction="#onMuro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
             <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="394.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="477.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
+            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
          </children>
       </Pane>
       <TabPane fx:id="tabPane" layoutX="283.0" layoutY="-30.0" prefHeight="630.0" prefWidth="617.0" tabClosingPolicy="UNAVAILABLE">
