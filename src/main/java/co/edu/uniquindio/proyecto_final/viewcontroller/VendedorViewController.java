@@ -41,6 +41,7 @@ public class VendedorViewController implements Initializable, Observer {
 
     private VendedorDto vendedor;
     VendedorController vendedorController;
+
     @FXML
     private ResourceBundle resources;
 
@@ -158,7 +159,22 @@ public class VendedorViewController implements Initializable, Observer {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+        System.out.print(controller.getVendedor());
     }
+
+    @FXML
+    void onEliminarProducto(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/eliminar-producto.fxml"));
+        Scene scene = new Scene(loader.load(), 520,651);
+        EliminarProductoViewController controller = loader.getController();
+        controller.setVendedor(vendedor);
+        controller.addObserver(this);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 
     @FXML
     void onAgregarPublicacion(ActionEvent event) {
@@ -174,7 +190,7 @@ public class VendedorViewController implements Initializable, Observer {
         int columnas = 0;
         int filas = 0;
         gridPaneProductos.getChildren().clear();
-        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.getCedula());
+        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.cedula());
         for (ProductoDto producto : productos) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/producto-view.fxml"));
             AnchorPane anchorPane = loader.load();
@@ -231,10 +247,7 @@ public class VendedorViewController implements Initializable, Observer {
         }
     }
 
-    @FXML
-    void onEliminarProducto(ActionEvent event) {
 
-    }
 
     @FXML
     void onEliminarPublicacion(ActionEvent event) {

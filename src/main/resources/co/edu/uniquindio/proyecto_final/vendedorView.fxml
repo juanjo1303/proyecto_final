@@ -17,21 +17,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
    <children>
       <Pane prefHeight="680.0" prefWidth="45.0" style="-fx-background-color: black;">
          <children>
-            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="3.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="3.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/home.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="1.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="2.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/users.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="-1.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="2.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/muro.png" />
                </image>
@@ -46,7 +46,7 @@
                   <Image url="@../images/logout.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="25.0" layoutX="9.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="25.0" layoutX="9.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/reporte.png" />
                </image>
@@ -64,7 +64,7 @@
             <Button fx:id="buttonMuro" layoutX="25.0" layoutY="345.0" mnemonicParsing="false" onAction="#onMuro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
             <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
-            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="174.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
+            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
          </children>
       </Pane>
       <TabPane fx:id="tabPane" layoutX="283.0" layoutY="-30.0" prefHeight="712.0" prefWidth="736.0" tabClosingPolicy="UNAVAILABLE">
@@ -74,17 +74,17 @@
               <AnchorPane fx:id="anchorPaneVendedores" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="49.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="736.0" />
-                        <Label layoutX="57.0" layoutY="4.0" prefHeight="35.0" prefWidth="119.0" text="Vendedores" textFill="WHITE">
+                        <Label text="Vendedores" textFill="WHITE" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="12.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="12.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
                            <image>
                               <Image url="@../images/users.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="buttonAgregarVendedor" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarVendedor" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Vendedor" />
+                        <Button fx:id="buttonAgregarVendedor" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarVendedor" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Vendedor" AnchorPane.rightAnchor="385.0" AnchorPane.topAnchor="5.0" />
                         <AnchorPane layoutY="44.0" prefHeight="555.0" prefWidth="610.0">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="638.0" prefWidth="736.0">
@@ -108,8 +108,8 @@
                               </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <Button fx:id="buttonModificarVendedor1" layoutX="378.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" />
-                        <Button fx:id="buttonEliminarVendedor" layoutX="501.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" />
+                        <Button fx:id="buttonModificarVendedor1" layoutX="378.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.rightAnchor="255.0" />
+                        <Button fx:id="buttonEliminarVendedor" layoutX="501.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -119,17 +119,17 @@
               <AnchorPane fx:id="anchorPaneMuro" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="61.0" layoutX="-10.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="754.0" />
-                        <Label layoutX="56.0" layoutY="5.0" text="Muro" textFill="WHITE">
+                        <Label layoutX="56.0" layoutY="5.0" text="Muro" textFill="WHITE" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
                            <image>
                               <Image url="@../images/muro.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="buttonAgregarPublicacion" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicación" />
+                        <Button fx:id="buttonAgregarPublicacion" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicación" AnchorPane.rightAnchor="385.0" AnchorPane.topAnchor="5.0" />
                         <ScrollPane hbarPolicy="NEVER" layoutY="44.0" prefHeight="638.0" prefWidth="736.0">
                            <content>
                               <GridPane fx:id="gridPanePublicaciones" alignment="CENTER" layoutX="123.0" layoutY="1.0" prefHeight="638.0" prefWidth="737.0">
@@ -146,8 +146,8 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
-                        <Button fx:id="buttonModificarPublicacion" layoutX="366.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" />
-                        <Button fx:id="buttonEliminarPublicacion" layoutX="479.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" />
+                        <Button fx:id="buttonModificarPublicacion" layoutX="366.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="5.0" />
+                        <Button fx:id="buttonEliminarPublicacion" layoutX="479.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -157,17 +157,17 @@
                 <AnchorPane fx:id="anchorPaneProductos" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="-20.0" layoutY="-12.0" stroke="BLACK" strokeType="INSIDE" width="760.0" />
-                        <Label layoutX="56.0" layoutY="6.0" text="Mis productos" textFill="WHITE">
+                        <Label layoutX="60.0" layoutY="7.0" text="Mis productos" textFill="WHITE" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="10.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="39.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
                            <image>
                               <Image url="@../images/products.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="buttonAgregarProducto" layoutX="221.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarProducto" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Producto" />
+                        <Button fx:id="buttonAgregarProducto" layoutX="221.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarProducto" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Producto" AnchorPane.rightAnchor="385.0" />
                       <AnchorPane layoutX="-1.0" layoutY="43.0" minHeight="0.0" minWidth="0.0" prefHeight="560.0" prefWidth="617.0">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="2.0" prefHeight="637.0" prefWidth="736.0">
@@ -192,8 +192,8 @@
                               </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <Button fx:id="buttonEliminarProducto" layoutX="494.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" />
-                        <Button fx:id="buttonModificarProducto" layoutX="379.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" />
+                        <Button fx:id="buttonEliminarProducto" layoutX="494.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" />
+                        <Button fx:id="buttonModificarProducto" layoutX="379.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.rightAnchor="255.0" />
                      </children>
                   </AnchorPane>
               </content>

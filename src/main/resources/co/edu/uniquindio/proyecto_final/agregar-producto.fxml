@@ -69,7 +69,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ImageView fx:id="imagenProducto" fitHeight="152.0" fitWidth="184.0" layoutX="276.0" layoutY="379.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagenProducto" fitHeight="152.0" fitWidth="184.0" layoutX="276.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lupa.png" />
          </image>

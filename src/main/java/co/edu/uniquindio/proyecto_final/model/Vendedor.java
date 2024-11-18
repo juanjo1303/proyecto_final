@@ -96,4 +96,8 @@ public class Vendedor {
     public void agregarProducto(Producto newProducto) {
         listProducto.add(newProducto);
     }
+
+    public void eliminarProducto(Producto producto) {
+        listProducto.remove(producto);
+    }
 }

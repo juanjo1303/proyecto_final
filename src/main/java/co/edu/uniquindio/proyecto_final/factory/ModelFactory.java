@@ -74,6 +74,12 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
+    public boolean eliminarProducto(ProductoDto producto, VendedorDto vendedorDto) {
+        Producto newProducto = mapper.productoDtoToProducto(producto);
+        return marketPlace.eliminarProducto(newProducto,vendedorDto.cedula());
+    }
+
+    @Override
     public boolean crearProducto(ProductoDto productoDto, VendedorDto vendedorDto) {
         Producto newProducto = mapper.productoDtoToProducto(productoDto);
         return marketPlace.crearProducto(newProducto, vendedorDto);

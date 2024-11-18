@@ -125,5 +125,24 @@ public class MarketPlace {
         }
         return true;
     }
+
+    public boolean eliminarProducto(Producto producto, String cedula) {
+        boolean eliminado = false;
+        for(Producto producto1 : productos){
+            if(producto1.getNombre().equals(producto.getNombre())){
+                productos.remove(producto);
+                break;
+            }
+        }
+
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(cedula)){
+                vendedor.eliminarProducto(producto);
+                eliminado = true;
+                break;
+            }
+        }
+        return eliminado;
+    }
 }
 

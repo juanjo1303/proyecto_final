@@ -3,9 +3,7 @@ package co.edu.uniquindio.proyecto_final.viewcontroller;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarProductoController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
@@ -99,12 +97,35 @@ public class AgregarProductoViewController implements Observable {
     private boolean validacionFinal(ActionEvent event) {
         boolean estado = false;
         if(camposVacios() == true){
-            productoDto = buildDtoProducto();
-            agregarProductoController.crearProducto(productoDto,vendedorDto);
-
-            estado = true;
+            if(verificarPrecio() == true){
+                productoDto = buildDtoProducto();
+                agregarProductoController.crearProducto(productoDto,vendedorDto);
+                estado = true;
+            }else {
+                mostrarAlertaPrecioCaracterInvalido();
+            }
         } else{
             mostarAlertaDatosVacios();
+        }
+        return estado;
+    }
+
+    private void mostrarAlertaPrecioCaracterInvalido() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Precio Inválido");
+        alerta.setHeaderText("El precio contiene caracteres inválidos");
+        alerta.setContentText("Por favor solo escriba números");
+        alerta.showAndWait();
+    }
+
+    private boolean verificarPrecio() {
+        boolean estado = true;
+        String precio = precioTextField.getText();
+        for(Character c : precio.toCharArray()){
+            if(!Character.isDigit(c)){
+                estado = false;
+                break;
+            }
         }
         return estado;
     }
@@ -225,5 +246,9 @@ public class AgregarProductoViewController implements Observable {
         for (Observer observer : observerSet) {
             observer.update();
         }
+    }
+
+    public VendedorDto getVendedor() {
+        return vendedorDto;
     }
 }
