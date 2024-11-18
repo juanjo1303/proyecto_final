@@ -89,7 +89,7 @@
                            <children>
                               <ScrollPane prefHeight="560.0" prefWidth="610.0">
                                  <content>
-                                    <GridPane fx:id="gridPaneProductos11" alignment="CENTER" prefHeight="545.0" prefWidth="585.0">
+                                    <GridPane fx:id="gridPaneVendedores" alignment="CENTER" prefHeight="545.0" prefWidth="585.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -130,13 +130,14 @@
                            </image>
                         </ImageView>
                         <Button fx:id="buttonAgregarPublicacion" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicación" />
-                        <ScrollPane hbarPolicy="NEVER" layoutY="44.0" prefHeight="280.0" prefWidth="610.0">
+                        <ScrollPane hbarPolicy="NEVER" layoutY="44.0" prefHeight="560.0" prefWidth="610.0">
                            <content>
-                              <GridPane fx:id="gridPaneProductos1" alignment="CENTER" layoutX="123.0" layoutY="1.0" prefHeight="272.5" prefWidth="585.0">
+                              <GridPane fx:id="gridPanePublicaciones" alignment="CENTER" layoutX="123.0" layoutY="1.0" prefHeight="545.0" prefWidth="585.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
                                  <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <padding>
@@ -147,7 +148,6 @@
                         </ScrollPane>
                         <Button fx:id="buttonModificarPublicacion" layoutX="366.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" />
                         <Button fx:id="buttonEliminarPublicacion" layoutX="479.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" />
-                        <AnchorPane layoutY="331.0" prefHeight="280.0" prefWidth="610.0" AnchorPane.topAnchor="335.0" />
                      </children>
                   </AnchorPane>
             </content>

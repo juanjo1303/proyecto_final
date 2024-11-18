@@ -25,6 +25,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.layout.GridPane;
@@ -55,10 +56,28 @@ public class VendedorViewController implements Initializable {
     private AnchorPane anchorPaneVendedores;
 
     @FXML
+    private Button buttonEliminarProducto;
+
+    @FXML
+    private Button buttonEliminarPublicacion;
+
+    @FXML
+    private Button buttonEliminarVendedor;
+
+    @FXML
     private Button buttonLogOut;
 
     @FXML
     private Button buttonMisProductos;
+
+    @FXML
+    private Button buttonModificarProducto;
+
+    @FXML
+    private Button buttonModificarPublicacion;
+
+    @FXML
+    private Button buttonModificarVendedor;
 
     @FXML
     private Button buttonMuro;
@@ -92,6 +111,15 @@ public class VendedorViewController implements Initializable {
 
     @FXML
     private GridPane gridPaneProductos;
+
+    @FXML
+    private GridPane gridPanePublicaciones;
+
+    @FXML
+    private GridPane gridPaneVendedores;
+
+    @FXML
+    private Text txtUserName;
 
     @FXML
     void onReportes(ActionEvent event) {
@@ -195,6 +223,37 @@ public class VendedorViewController implements Initializable {
             }
         }
     }
+
+    @FXML
+    void onEliminarProducto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onEliminarPublicacion(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onEliminarVendedor(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onModificarProducto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onModificarPublicacion(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onModificarVendedor(ActionEvent event) {
+
+    }
+
 
     @FXML
     void initialize() {
