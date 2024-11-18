@@ -20,4 +20,9 @@ public class LoginController implements ILoginControllerServices {
     public boolean verificarCredenciales(UsuarioDto usuarioDto) {
         return modelFactory.verificarCredenciales(usuarioDto);
     }
+
+    @Override
+    public String obtenerCedulaVendedor(UsuarioDto usuarioDto) {
+        return modelFactory.obtenerCedulaVendedor(usuarioDto);
+    }
 }

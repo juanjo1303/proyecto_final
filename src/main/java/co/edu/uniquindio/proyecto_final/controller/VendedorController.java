@@ -14,8 +14,8 @@ public class VendedorController implements IVendedorControllerServices {
     }
 
     @Override
-    public VendedorDto getVendedor(String id) {
-        return modelFactory.getVendedor(id);
+    public VendedorDto getVendedor(String cedula) {
+        return modelFactory.getVendedor(cedula);
     }
 
     @Override

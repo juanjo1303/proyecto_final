@@ -227,5 +227,4 @@ public class RegistroViewController {
         assert usuarioTextField != null : "fx:id=\"usuarioTextField\" was not injected: check your FXML file 'registro.fxml'.";
         registroController = new RegistroController();
     }
-
 }

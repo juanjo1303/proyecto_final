@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
    <children>
       <Pane layoutY="-4.0" prefHeight="610.0" prefWidth="44.0" style="-fx-background-color: black;">
          <children>
@@ -57,7 +57,7 @@
             </Text>
             <Button fx:id="buttonVendedores" layoutX="25.0" layoutY="223.0" mnemonicParsing="false" onAction="#onVendedores" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Vendedores" textFill="WHITE" />
             <Button fx:id="buttonMuro" layoutX="25.0" layoutY="307.0" mnemonicParsing="false" onAction="#onMuro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
-            <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="394.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis productos" textFill="WHITE" />
+            <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="394.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="477.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
             <Button fx:id="buttonReportes" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
          </children>
@@ -79,6 +79,7 @@
                               <Image url="@../images/users.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="buttonAgregarVendedor" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarVendedor" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF;" text="Agregar Vendedor" />
                      </children>
                   </AnchorPane>
             </content>
@@ -98,6 +99,7 @@
                               <Image url="@../images/muro.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="buttonAgregarPublicacion" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicación" />
                      </children>
                   </AnchorPane>
             </content>
@@ -117,6 +119,7 @@
                               <Image url="@../images/products.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="buttonAgregarProducto" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarProducto" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF;" text="Agregar Producto" />
                       <AnchorPane layoutX="-1.0" layoutY="43.0" minHeight="0.0" minWidth="0.0" prefHeight="560.0" prefWidth="617.0">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="2.0" prefHeight="556.0" prefWidth="618.0">

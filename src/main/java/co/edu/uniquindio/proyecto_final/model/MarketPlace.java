@@ -17,9 +17,9 @@ public class MarketPlace {
         this.nombre = nombre;
     }
 
-    public Vendedor getVendedor(String id) {
+    public Vendedor getVendedor(String cedula) {
         for (Vendedor v : vendedores) {
-            if (v.getCedula().equals(id)) {
+            if (v.getCedula().equals(cedula)) {
                 return v;
             }
         }
@@ -102,6 +102,16 @@ public class MarketPlace {
             }
         }
         return false;
+    }
+
+    public String obtenerCedulaVendedor(UsuarioDto usuarioDto) {
+        String cedula = null;
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getUsuario().equals(usuarioDto.user())){
+                cedula = vendedor.getCedula();
+            }
+        }
+        return cedula;
     }
 }
 

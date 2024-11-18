@@ -74,6 +74,11 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
+    public String obtenerCedulaVendedor(UsuarioDto usuarioDto) {
+        return marketPlace.obtenerCedulaVendedor(usuarioDto);
+    }
+
+    @Override
     public boolean verificarCedulaExistente(VendedorDto vendedor) {
         if(marketPlace.verificarCedulaVendedor(vendedor.cedula())){
             return true;
@@ -101,8 +106,8 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public VendedorDto getVendedor(String id) {
-        return mapper.VendedorToVendedorDto(marketPlace.getVendedor(id));
+    public VendedorDto getVendedor(String cedula) {
+        return mapper.VendedorToVendedorDto(marketPlace.getVendedor(cedula));
     }
 
     @Override

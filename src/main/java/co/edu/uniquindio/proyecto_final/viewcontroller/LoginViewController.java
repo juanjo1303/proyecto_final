@@ -27,6 +27,11 @@ public class LoginViewController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        assert contrasenaField != null : "fx:id=\"contrasenaField\" was not injected: check your FXML file 'login.fxml'.";
+        assert contrasenaTxt != null : "fx:id=\"contrasenaTxt\" was not injected: check your FXML file 'login.fxml'.";
+        assert entrarLoginButton != null : "fx:id=\"entrarLoginButton\" was not injected: check your FXML file 'login.fxml'.";
+        assert usuarioField != null : "fx:id=\"usuarioField\" was not injected: check your FXML file 'login.fxml'.";
+        assert usuarioTxt != null : "fx:id=\"usuarioTxt\" was not injected: check your FXML file 'login.fxml'.";
         vendedorController = new VendedorController();
         loginController = new LoginController();
     }
@@ -61,19 +66,26 @@ public class LoginViewController implements Initializable{
         String usuario = usuarioTxt.getText();
         String contrasena = contrasenaTxt.getText();
         UsuarioDto usuarioDto1 = new UsuarioDto(usuario,contrasena);
+        String cedula = obtenerCedulaVendedor(usuarioDto1);
 
         if (loginController.verificarCredenciales(usuarioDto1)){
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
             Scene scene = new Scene(loader.load(), 900,600);
             VendedorViewController controller = loader.getController();
-            controller.setVendedor(vendedorController.getVendedor("0000"));
+            controller.setVendedor(vendedorController.getVendedor(cedula));
+            Stage currentStage = (Stage) registroButton.getScene().getWindow();
+            currentStage.close();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            //loadStage("/co/edu/uniquindio/proyecto_final/vendedorView.fxml", event);
         } else {
             mostrarAlertaCredencialesInvalidas();
         }
+    }
+
+    private String obtenerCedulaVendedor(UsuarioDto usuarioDto1) {
+        return loginController.obtenerCedulaVendedor(usuarioDto1);
     }
 
     @FXML
@@ -102,15 +114,5 @@ public class LoginViewController implements Initializable{
         alerta.setHeaderText("Credenciales incorrectas");
         alerta.setContentText("Por favor, verifica tu usuario y contraseña.");
         alerta.showAndWait();
-    }
-
-    @FXML
-    void initialize() {
-        assert contrasenaField != null : "fx:id=\"contrasenaField\" was not injected: check your FXML file 'login.fxml'.";
-        assert contrasenaTxt != null : "fx:id=\"contrasenaTxt\" was not injected: check your FXML file 'login.fxml'.";
-        assert entrarLoginButton != null : "fx:id=\"entrarLoginButton\" was not injected: check your FXML file 'login.fxml'.";
-        assert usuarioField != null : "fx:id=\"usuarioField\" was not injected: check your FXML file 'login.fxml'.";
-        assert usuarioTxt != null : "fx:id=\"usuarioTxt\" was not injected: check your FXML file 'login.fxml'.";
-        loginController = new LoginController();
     }
 }

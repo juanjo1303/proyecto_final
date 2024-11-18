@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.proyecto_final.MarketPlaceApplication;
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
@@ -70,6 +71,15 @@ public class VendedorViewController implements Initializable {
     private Button buttonReportes;
 
     @FXML
+    private Button buttonAgregarProducto;
+
+    @FXML
+    private Button buttonAgregarPublicacion;
+
+    @FXML
+    private Button buttonAgregarVendedor;
+
+    @FXML
     private Tab tabMuro;
 
     @FXML
@@ -103,6 +113,26 @@ public class VendedorViewController implements Initializable {
     void onProductos(ActionEvent event) throws IOException {
         tabPane.getSelectionModel().select(tabProductos);
         mostrarPublicaciones();
+    }
+
+    @FXML
+    void onAgregarProducto(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-producto.fxml"));
+        Scene scene = new Scene(loader.load(), 520,651);
+        AgregarProductoViewController controller = loader.getController();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void onAgregarPublicacion(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onAgregarVendedor(ActionEvent event) {
+
     }
 
     public void mostrarPublicaciones() throws IOException {
