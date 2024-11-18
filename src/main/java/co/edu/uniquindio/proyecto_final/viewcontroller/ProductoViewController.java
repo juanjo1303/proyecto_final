@@ -18,13 +18,14 @@ public class ProductoViewController {
 
     @FXML
     private Label labelPrecio;
+
     ProductoDto producto;
 
     public void setData(ProductoDto producto) {
-        imagenProducto.setImage(producto.getImagen());
-        labelNombre.setText(producto.getNombre());
-        labelDescripcion.setText(producto.categoria);
-        labelPrecio.setText(producto.precio);
+        imagenProducto.setImage(producto.imagen());
+        labelNombre.setText(producto.nombre());
+        labelDescripcion.setText(producto.categoria());
+        labelPrecio.setText(producto.precio());
         this.producto = producto;
     }
 }

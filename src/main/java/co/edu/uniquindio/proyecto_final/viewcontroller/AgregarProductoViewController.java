@@ -1,9 +1,15 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarProductoController;
+import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
+import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.model.MarketPlace;
 import javafx.event.ActionEvent;
@@ -15,12 +21,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javax.swing.*;
+
 public class AgregarProductoViewController {
     private AgregarProductoController agregarProductoController;
+    private ProductoDto productoDto;
+    private VendedorDto vendedorDto;
 
     @FXML
     void initialize() {
@@ -33,7 +44,7 @@ public class AgregarProductoViewController {
         assert nombreTextField != null : "fx:id=\"nombreTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
         assert precioTextField != null : "fx:id=\"precioTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
         cbEstado.getItems().addAll(Estado.values());
-
+        agregarProductoController = new AgregarProductoController();
     }
 
     @FXML
@@ -61,6 +72,9 @@ public class AgregarProductoViewController {
     private ImageView escudoImageView;
 
     @FXML
+    private ImageView imagenProducto;
+
+    @FXML
     private TextField nombreTextField;
 
     @FXML
@@ -68,7 +82,33 @@ public class AgregarProductoViewController {
 
     @FXML
     void onAgregar(ActionEvent event) {
-        MarketPlace marketPlace = new MarketPlace();
+        validacionFinal(event);
+        Stage currentStage = (Stage) agregarButton.getScene().getWindow();
+        currentStage.close();
+
+    }
+
+    private void validacionFinal(ActionEvent event) {
+        if(camposVacios() == true){
+            productoDto = buildDtoProducto();
+            agregarProductoController.crearProducto(productoDto,vendedorDto);
+        }
+    }
+
+    private ProductoDto buildDtoProducto() {
+        return new ProductoDto(nombreTextField.getText(),null,categoriaTextField.getText(), precioTextField.getText(), cbEstado.getValue());
+    }
+
+    private boolean camposVacios() {
+        String nombre = nombreTextField.getText();
+        String categoria = categoriaTextField.getText();
+        String precio = precioTextField.getText();
+        Estado estado = cbEstado.getValue();
+
+        if(nombre == null || categoria == null || precio == null || estado == null ){
+            return false;
+        }
+        return true;
     }
 
     @FXML
@@ -79,7 +119,13 @@ public class AgregarProductoViewController {
 
     @FXML
     void onSeleccionarImagen(ActionEvent event) {
+        seleccionarImagen();
+    }
 
+    private void seleccionarImagen() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar imagen");
+        int resultado = fileChooser.showSaveDialog(null);
     }
 
     @FXML
@@ -98,4 +144,7 @@ public class AgregarProductoViewController {
     }
 
 
+    public void setVendedor(VendedorDto vendedorDto) {
+        this.vendedorDto = vendedorDto;
+    }
 }

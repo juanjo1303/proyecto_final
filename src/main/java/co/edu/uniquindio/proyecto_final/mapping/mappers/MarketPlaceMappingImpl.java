@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.model.Vendedor;
+import co.edu.uniquindio.proyecto_final.model.builder.ProductoBuilder;
 import co.edu.uniquindio.proyecto_final.service.IMarketPlaceMappingImplServices;
 import javafx.scene.image.Image;
 
@@ -34,6 +35,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
         return dto;
     }
 
+
     @Override
     public List<ProductoDto> ProductosToProductosDto(List<Producto> productos) {
         List<ProductoDto> productosDto = new ArrayList<>();
@@ -45,12 +47,18 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
 
     @Override
     public ProductoDto ProductoToProductoDto(Producto producto) {
-        ProductoDto productoDto = new ProductoDto();
-        productoDto.setNombre(producto.getNombre());
-        productoDto.setCategoria(producto.getCategoria());
-        productoDto.setPrecio(producto.getPrecio());
-        productoDto.setImagen(new Image(getClass().getResource(producto.getImagen()).toString()));
-        productoDto.setEstado(producto.getEstado());
+        ProductoDto productoDto = new ProductoDto(producto.getNombre(), new Image(getClass().getResource(producto.getImagen()).toString()) ,producto.getCategoria(),producto.getPrecio(),producto.getEstado() );
         return productoDto;
+    }
+
+    @Override
+    public Producto productoDtoToProducto(ProductoDto productoDto) {
+        return Producto.builder()
+                .nombre(productoDto.nombre())
+                .imagen(null)
+                .categoria(productoDto.categoria())
+                .precio(productoDto.precio())
+                .estado(productoDto.estado())
+                .build();
     }
 }

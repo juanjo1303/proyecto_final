@@ -3,12 +3,14 @@ package co.edu.uniquindio.proyecto_final.model.builder;
 import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 
+import java.awt.*;
+
 public class ProductoBuilder {
-    public String nombre;
-    public String imagen;
-    public String categoria;
-    public String precio;
-    public Estado estado;
+    protected String nombre;
+    protected String imagen;
+    protected String categoria;
+    protected String precio;
+    protected Estado estado;
 
     public ProductoBuilder nombre(String nombre) {
         this.nombre = nombre;

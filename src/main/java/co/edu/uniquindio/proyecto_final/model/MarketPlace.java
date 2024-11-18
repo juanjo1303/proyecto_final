@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -112,6 +113,17 @@ public class MarketPlace {
             }
         }
         return cedula;
+    }
+
+    public boolean crearProducto(Producto newProducto, VendedorDto vendedorDto) {
+        productos.add(newProducto);
+        for(Vendedor vendedor : vendedores){
+            if (vendedor.getUsuario().equals(vendedorDto.usuario())){
+                vendedor.agregarProducto(newProducto);
+                break;
+            }
+        }
+        return true;
     }
 }
 

@@ -7,6 +7,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import java.util.List;
 
 public interface IModelFactoryServices {
+    boolean crearProducto(ProductoDto productoDto, VendedorDto vendedorDto);
     String obtenerCedulaVendedor(UsuarioDto usuarioDto);
     boolean verificarCedulaExistente(VendedorDto vendedor);
     boolean verificarVendedorExistente(VendedorDto vendedorDto);
