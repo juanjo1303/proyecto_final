@@ -12,4 +12,5 @@ public interface IMarketPlaceMappingImplServices {
     VendedorDto VendedorToVendedorDto(Vendedor vendedor);
     List<ProductoDto> ProductosToProductosDto(List<Producto> productos);
     ProductoDto ProductoToProductoDto(Producto producto);
+    Producto productoDtoToProducto(ProductoDto productoDto);
 }

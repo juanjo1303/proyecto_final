@@ -92,4 +92,8 @@ public class Vendedor {
     }
 
     public static VendedorBuilder builder() {return new VendedorBuilder();}
+
+    public void agregarProducto(Producto newProducto) {
+        listProducto.add(newProducto);
+    }
 }

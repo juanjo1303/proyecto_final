@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.proyecto_final.MarketPlaceApplication;
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
@@ -120,6 +119,7 @@ public class VendedorViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-producto.fxml"));
         Scene scene = new Scene(loader.load(), 520,651);
         AgregarProductoViewController controller = loader.getController();
+        controller.setVendedor(vendedor);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto_final.model;
 import co.edu.uniquindio.proyecto_final.model.builder.ProductoBuilder;
+import javafx.scene.image.Image;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 @Data

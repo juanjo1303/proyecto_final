@@ -48,7 +48,7 @@
                 <Font size="13.0" />
             </font>
         </Label>
-        <Label layoutX="89.0" layoutY="352.0" text="Imagen" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="353.0">
+        <Label layoutX="89.0" layoutY="352.0" text="Imagen" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="415.0">
             <font>
                 <Font size="13.0" />
             </font>
@@ -64,10 +64,15 @@
             </font>
         </Button>
       <ComboBox fx:id="cbEstado" layoutX="92.0" layoutY="316.0" prefWidth="150.0" style="-fx-background-color: #000000; -fx-text-fill: #FFFFFF;" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="315.0" />
-      <Button fx:id="bttnSeleccionarImagen" layoutX="92.0" layoutY="378.0" mnemonicParsing="false" onAction="#onSeleccionarImagen" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #000000;" text="Seleccionar Imagen" textFill="WHITE" AnchorPane.topAnchor="378.0">
+      <Button fx:id="bttnSeleccionarImagen" layoutX="92.0" layoutY="439.0" mnemonicParsing="false" onAction="#onSeleccionarImagen" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #000000;" text="Seleccionar Imagen" textFill="WHITE" AnchorPane.topAnchor="440.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <ImageView fx:id="imagenProducto" fitHeight="152.0" fitWidth="184.0" layoutX="276.0" layoutY="379.0" opacity="0.21" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/lupa.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
