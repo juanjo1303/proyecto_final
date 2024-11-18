@@ -71,7 +71,7 @@ public class LoginViewController implements Initializable{
         if (loginController.verificarCredenciales(usuarioDto1)){
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedorView.fxml"));
-            Scene scene = new Scene(loader.load(), 900,600);
+            Scene scene = new Scene(loader.load());
             VendedorViewController controller = loader.getController();
             controller.setVendedor(vendedorController.getVendedor(cedula));
             Stage currentStage = (Stage) registroButton.getScene().getWindow();

@@ -182,7 +182,7 @@ public class VendedorViewController implements Initializable, Observer {
             controller.setData(producto);
             gridPaneProductos.add(anchorPane, columnas, filas);
             columnas++;
-            if (columnas > 1) {
+            if (columnas > 3) {
                 columnas = 0;
                 filas++;
             }

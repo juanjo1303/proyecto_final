@@ -8,38 +8,38 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="238.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.ProductoViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.ProductoViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="259.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="230.0" />
-      <VBox alignment="TOP_CENTER" layoutX="19.0" layoutY="23.0" prefHeight="207.0" prefWidth="199.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="174.0" layoutX="5.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="141.0" />
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="17.0" prefHeight="153.0" prefWidth="121.0">
          <children>
-            <Label fx:id="labelNombre" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label fx:id="labelNombre" alignment="CENTER" prefHeight="12.0" prefWidth="78.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <font>
-                  <Font size="10.0" />
+                  <Font size="8.0" />
                </font>
             </Label>
-            <ImageView fx:id="imagenProducto" fitHeight="141.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagenProducto" fitHeight="80.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="labelDescripcion" alignment="TOP_LEFT" prefHeight="28.0" prefWidth="179.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="JUSTIFY" wrapText="true">
+            <Label fx:id="labelDescripcion" alignment="TOP_LEFT" prefHeight="14.0" prefWidth="107.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="JUSTIFY" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font size="10.0" />
+                  <Font size="8.0" />
                </font>
             </Label>
-            <Label fx:id="labelPrecio" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label fx:id="labelPrecio" alignment="CENTER" prefHeight="12.0" prefWidth="58.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font size="10.0" />
+                  <Font size="8.0" />
                </font>
             </Label>
          </children>
