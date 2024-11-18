@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,13 +9,13 @@ import co.edu.uniquindio.proyecto_final.controller.AgregarProductoController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.model.Estado;
-import co.edu.uniquindio.proyecto_final.model.MarketPlace;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -26,12 +24,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+
 import javax.swing.*;
 
 public class AgregarProductoViewController {
     private AgregarProductoController agregarProductoController;
     private ProductoDto productoDto;
     private VendedorDto vendedorDto;
+    private String imageUrl = "/co/edu/uniquindio/images/";
 
     @FXML
     void initialize() {
@@ -82,21 +82,34 @@ public class AgregarProductoViewController {
 
     @FXML
     void onAgregar(ActionEvent event) {
-        validacionFinal(event);
-        Stage currentStage = (Stage) agregarButton.getScene().getWindow();
-        currentStage.close();
-
-    }
-
-    private void validacionFinal(ActionEvent event) {
-        if(camposVacios() == true){
-            productoDto = buildDtoProducto();
-            agregarProductoController.crearProducto(productoDto,vendedorDto);
+        if(validacionFinal(event)){
+            Stage currentStage = (Stage) agregarButton.getScene().getWindow();
+            currentStage.close();
         }
     }
 
+    private boolean validacionFinal(ActionEvent event) {
+        boolean estado = false;
+        if(camposVacios() == true){
+            productoDto = buildDtoProducto();
+            agregarProductoController.crearProducto(productoDto,vendedorDto);
+            estado = true;
+        } else{
+            mostarAlertaDatosVacios();
+        }
+        return estado;
+    }
+
+    private void mostarAlertaDatosVacios() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error de registro");
+        alerta.setHeaderText("Campos vacios");
+        alerta.setContentText("Por favor verifica tus datos.");
+        alerta.showAndWait();
+    }
+
     private ProductoDto buildDtoProducto() {
-        return new ProductoDto(nombreTextField.getText(),null,categoriaTextField.getText(), precioTextField.getText(), cbEstado.getValue());
+        return new ProductoDto(nombreTextField.getText(),imageUrl,categoriaTextField.getText(), precioTextField.getText(), cbEstado.getValue());
     }
 
     private boolean camposVacios() {
@@ -104,8 +117,9 @@ public class AgregarProductoViewController {
         String categoria = categoriaTextField.getText();
         String precio = precioTextField.getText();
         Estado estado = cbEstado.getValue();
+        String image = imageUrl;
 
-        if(nombre == null || categoria == null || precio == null || estado == null ){
+        if(nombre == null || categoria == null || precio == null || estado == null || image == null ){
             return false;
         }
         return true;
@@ -125,7 +139,28 @@ public class AgregarProductoViewController {
     private void seleccionarImagen() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar imagen");
-        int resultado = fileChooser.showSaveDialog(null);
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "png", "jpg", "jpeg"));
+
+        int resultado = fileChooser.showOpenDialog(null);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File archivoImagen = fileChooser.getSelectedFile();
+            try {
+                Image imagen = new Image(new FileInputStream(archivoImagen));
+                imagenProducto.setImage(imagen);
+                imageUrl = imageUrl + archivoImagen.getName();
+                System.out.print(imageUrl);
+            } catch (FileNotFoundException e) {
+                mostrarAlertaImagenInvalida();
+            }
+        }
+    }
+
+    private void mostrarAlertaImagenInvalida() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error al seleccionar imagen");
+        alerta.setHeaderText("No se pudo seleccionar imagen");
+        alerta.setContentText("Por favor seleccione una imagen");
+        alerta.showAndWait();
     }
 
     @FXML

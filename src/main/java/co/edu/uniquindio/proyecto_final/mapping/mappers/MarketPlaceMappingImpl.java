@@ -47,7 +47,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
 
     @Override
     public ProductoDto ProductoToProductoDto(Producto producto) {
-        ProductoDto productoDto = new ProductoDto(producto.getNombre(), new Image(getClass().getResource(producto.getImagen()).toString()) ,producto.getCategoria(),producto.getPrecio(),producto.getEstado() );
+        ProductoDto productoDto = new ProductoDto(producto.getNombre(), producto.getImagen() ,producto.getCategoria(),producto.getPrecio(),producto.getEstado() );
         return productoDto;
     }
 
@@ -55,7 +55,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
     public Producto productoDtoToProducto(ProductoDto productoDto) {
         return Producto.builder()
                 .nombre(productoDto.nombre())
-                .imagen(null)
+                .imagen(productoDto.imagen())
                 .categoria(productoDto.categoria())
                 .precio(productoDto.precio())
                 .estado(productoDto.estado())

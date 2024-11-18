@@ -3,6 +3,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ProductoViewController {
@@ -22,7 +23,8 @@ public class ProductoViewController {
     ProductoDto producto;
 
     public void setData(ProductoDto producto) {
-        imagenProducto.setImage(producto.imagen());
+        imagenProducto.setImage(new Image(getClass().getResource(producto.imagen()).toExternalForm()));
+        System.out.print(getClass().getResource(producto.imagen()).toExternalForm());
         labelNombre.setText(producto.nombre());
         labelDescripcion.setText(producto.categoria());
         labelPrecio.setText(producto.precio());
