@@ -30,19 +30,19 @@
                 <Font size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="nombreTextField" layoutX="92.0" layoutY="126.0" prefWidth="336.0" promptText="Nombre" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="126.0" />
+        <TextField fx:id="nombreTextField" layoutX="92.0" layoutY="126.0" prefWidth="336.0" promptText="Nombre" />
         <Label layoutX="87.0" layoutY="162.0" text="Categoria" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="377.0" AnchorPane.topAnchor="164.0">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="categoriaTextField" layoutX="92.0" layoutY="189.0" prefWidth="336.0" promptText="Categoria" AnchorPane.bottomAnchor="437.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="189.0" />
+        <TextField fx:id="categoriaTextField" layoutX="92.0" layoutY="189.0" prefWidth="336.0" promptText="Categoria" />
         <Label layoutX="85.0" layoutY="227.0" text="Precio" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="227.0">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="precioTextField" layoutX="92.0" layoutY="253.0" prefWidth="336.0" promptText="Precio" AnchorPane.bottomAnchor="374.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="252.0" />
+        <TextField fx:id="precioTextField" layoutX="92.0" layoutY="253.0" prefWidth="336.0" promptText="Precio" />
         <Label layoutX="85.0" layoutY="291.0" text="Estado" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="290.0">
             <font>
                 <Font size="13.0" />
@@ -53,18 +53,18 @@
                 <Font size="13.0" />
             </font>
         </Label>
-        <Button fx:id="agregarButton" layoutX="92.0" layoutY="562.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Agregar" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.topAnchor="561.0">
+        <Button fx:id="agregarButton" layoutX="92.0" layoutY="562.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Agregar" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="cerrarButton" layoutX="92.0" layoutY="607.0" mnemonicParsing="false" onAction="#onCerrar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Cerrar" textFill="WHITE" AnchorPane.topAnchor="601.0">
+        <Button fx:id="cerrarButton" layoutX="92.0" layoutY="607.0" mnemonicParsing="false" onAction="#onCerrar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Cerrar" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-      <ComboBox fx:id="cbEstado" layoutX="92.0" layoutY="316.0" prefWidth="150.0" style="-fx-background-color: #000000; -fx-text-fill: #FFFFFF;" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="315.0" />
-      <Button fx:id="bttnSeleccionarImagen" layoutX="92.0" layoutY="439.0" mnemonicParsing="false" onAction="#onSeleccionarImagen" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #000000;" text="Seleccionar Imagen" textFill="WHITE" AnchorPane.topAnchor="440.0">
+      <ComboBox fx:id="cbEstado" layoutX="92.0" layoutY="316.0" prefWidth="150.0" style="-fx-background-color: #000000; -fx-text-fill: #FFFFFF;" />
+      <Button fx:id="bttnSeleccionarImagen" layoutX="92.0" layoutY="439.0" mnemonicParsing="false" onAction="#onSeleccionarImagen" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #000000;" text="Seleccionar Imagen" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

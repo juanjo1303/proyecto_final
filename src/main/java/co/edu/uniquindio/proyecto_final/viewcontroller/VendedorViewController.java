@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
+import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
 
-public class VendedorViewController implements Initializable {
+public class VendedorViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vendedorController = new VendedorController();
@@ -142,12 +143,18 @@ public class VendedorViewController implements Initializable {
         mostrarPublicaciones();
     }
 
+    @Override
+    public void update() throws IOException{
+        mostrarPublicaciones();
+    }
+
     @FXML
     void onAgregarProducto(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-producto.fxml"));
         Scene scene = new Scene(loader.load(), 520,651);
         AgregarProductoViewController controller = loader.getController();
         controller.setVendedor(vendedor);
+        controller.addObserver(this);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -280,5 +287,8 @@ public class VendedorViewController implements Initializable {
     public void setVendedor(VendedorDto vendedor) {
         this.vendedor = vendedor;
     }
+
+
+
 }
 

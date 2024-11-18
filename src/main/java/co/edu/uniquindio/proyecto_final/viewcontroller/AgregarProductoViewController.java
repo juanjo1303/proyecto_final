@@ -3,12 +3,16 @@ package co.edu.uniquindio.proyecto_final.viewcontroller;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarProductoController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.model.Estado;
+import co.edu.uniquindio.proyecto_final.service.Observable;
+import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -21,31 +25,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 
 import javax.swing.*;
 
-public class AgregarProductoViewController {
+public class AgregarProductoViewController implements Observable {
     private AgregarProductoController agregarProductoController;
     private ProductoDto productoDto;
     private VendedorDto vendedorDto;
     private String imageUrl = "/co/edu/uniquindio/images/";
-
-    @FXML
-    void initialize() {
-        assert agregarButton != null : "fx:id=\"agregarButton\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert bttnSeleccionarImagen != null : "fx:id=\"bttnSeleccionarImagen\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert categoriaTextField != null : "fx:id=\"categoriaTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert cbEstado != null : "fx:id=\"cbEstado\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert cerrarButton != null : "fx:id=\"cerrarButton\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert escudoImageView != null : "fx:id=\"escudoImageView\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert nombreTextField != null : "fx:id=\"nombreTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        assert precioTextField != null : "fx:id=\"precioTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
-        cbEstado.getItems().addAll(Estado.values());
-        agregarProductoController = new AgregarProductoController();
-    }
+    private Set<Observer> observerSet;
 
     @FXML
     private ResourceBundle resources;
@@ -81,10 +73,26 @@ public class AgregarProductoViewController {
     private TextField precioTextField;
 
     @FXML
-    void onAgregar(ActionEvent event) {
+    void initialize() {
+        assert agregarButton != null : "fx:id=\"agregarButton\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert bttnSeleccionarImagen != null : "fx:id=\"bttnSeleccionarImagen\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert categoriaTextField != null : "fx:id=\"categoriaTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert cbEstado != null : "fx:id=\"cbEstado\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert cerrarButton != null : "fx:id=\"cerrarButton\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert escudoImageView != null : "fx:id=\"escudoImageView\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert nombreTextField != null : "fx:id=\"nombreTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        assert precioTextField != null : "fx:id=\"precioTextField\" was not injected: check your FXML file 'agregar-producto.fxml'.";
+        cbEstado.getItems().addAll(Estado.values());
+        agregarProductoController = new AgregarProductoController();
+        observerSet = new HashSet<>();
+    }
+
+    @FXML
+    void onAgregar(ActionEvent event) throws IOException {
         if(validacionFinal(event)){
             Stage currentStage = (Stage) agregarButton.getScene().getWindow();
             currentStage.close();
+            this.notifyObservers();
         }
     }
 
@@ -93,6 +101,7 @@ public class AgregarProductoViewController {
         if(camposVacios() == true){
             productoDto = buildDtoProducto();
             agregarProductoController.crearProducto(productoDto,vendedorDto);
+
             estado = true;
         } else{
             mostarAlertaDatosVacios();
@@ -136,7 +145,7 @@ public class AgregarProductoViewController {
         seleccionarImagen();
     }
 
-    private void seleccionarImagen() {
+    /*private void seleccionarImagen() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar imagen");
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "png", "jpg", "jpeg"));
@@ -153,6 +162,24 @@ public class AgregarProductoViewController {
                 mostrarAlertaImagenInvalida();
             }
         }
+    }*/
+
+    private void seleccionarImagen() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar imagen");
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        File archivoImagen = fileChooser.showOpenDialog(new Stage());
+        if(archivoImagen != null){
+            try {
+                Image imagen = new Image(new FileInputStream(archivoImagen));
+                imagenProducto.setImage(imagen);
+                imageUrl = imageUrl + archivoImagen.getName();
+            } catch (FileNotFoundException e) {
+                mostrarAlertaImagenInvalida();
+            }
+        }
+
     }
 
     private void mostrarAlertaImagenInvalida() {
@@ -181,5 +208,22 @@ public class AgregarProductoViewController {
 
     public void setVendedor(VendedorDto vendedorDto) {
         this.vendedorDto = vendedorDto;
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        observerSet.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observerSet.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() throws IOException {
+        for (Observer observer : observerSet) {
+            observer.update();
+        }
     }
 }

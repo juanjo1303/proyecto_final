@@ -24,7 +24,6 @@ public class ProductoViewController {
 
     public void setData(ProductoDto producto) {
         imagenProducto.setImage(new Image(getClass().getResource(producto.imagen()).toExternalForm()));
-        System.out.print(getClass().getResource(producto.imagen()).toExternalForm());
         labelNombre.setText(producto.nombre());
         labelDescripcion.setText(producto.categoria());
         labelPrecio.setText(producto.precio());
