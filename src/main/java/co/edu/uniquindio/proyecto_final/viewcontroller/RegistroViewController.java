@@ -176,12 +176,8 @@ public class RegistroViewController {
     }
 
     private void confirmacion(Event event){
-        if (mostrarAlertaUsuario() == true){
-            loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
-        }
-        else {
-            loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
-        }
+        mostrarAlertaUsuario();
+        loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
     }
 
     private void alertaContrasena(){
@@ -200,17 +196,12 @@ public class RegistroViewController {
         alerta.showAndWait();
     }
 
-    private boolean mostrarAlertaUsuario() {
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+    private void mostrarAlertaUsuario() {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Registro de Usuario");
         alerta.setHeaderText("Registro de Usuario satisfactorio");
         alerta.setContentText("Bienvenido a Marketplace");
-        Optional<ButtonType> resultado = alerta.showAndWait();
-        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
+        alerta.showAndWait();
     }
 
     @FXML
