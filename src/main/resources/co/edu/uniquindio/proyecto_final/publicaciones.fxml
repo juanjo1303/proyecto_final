@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.PublicacionViewController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="123.0" layoutX="5.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="727.0" />
+      <ImageView fx:id="imagenProducto" fitHeight="86.0" fitWidth="135.0" layoutX="29.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelDescripcion" alignment="CENTER" layoutX="338.0" layoutY="25.0" prefHeight="86.0" prefWidth="145.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNombre" alignment="CENTER" layoutX="190.0" layoutY="25.0" prefHeight="18.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPrecio" alignment="CENTER" layoutX="225.0" layoutY="52.0" prefHeight="18.0" prefWidth="65.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelEstado" alignment="CENTER" layoutX="224.0" layoutY="80.0" prefHeight="18.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Estado" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelComentario" alignment="CENTER" layoutX="496.0" layoutY="25.0" prefHeight="86.0" prefWidth="166.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Comentarios" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button fx:id="bottonLike" layoutX="673.0" layoutY="45.0" mnemonicParsing="false" onAction="#onDarLike" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/like.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="labelNumLikes" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="89.0" prefHeight="18.0" prefWidth="34.0" text="0" />
+   </children>
+</AnchorPane>

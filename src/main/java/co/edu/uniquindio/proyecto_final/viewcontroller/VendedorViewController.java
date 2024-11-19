@@ -30,7 +30,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
 
@@ -153,19 +152,20 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onMuro(ActionEvent event) {
+    void onMuro(ActionEvent event) throws IOException {
         tabPane.getSelectionModel().select(tabMuro);
+        mostrarPublicaciones();
     }
 
     @FXML
     void onProductos(ActionEvent event) throws IOException {
         tabPane.getSelectionModel().select(tabProductos);
-        mostrarPublicaciones();
+        mostrarProductos();
     }
 
     @Override
     public void update() throws IOException{
-        mostrarPublicaciones();
+        mostrarProductos();
         mostrarVendedores();
     }
 
@@ -223,6 +223,21 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     public void mostrarPublicaciones() throws IOException {
+        int columnas = 0;
+        int filas = 0;
+        gridPanePublicaciones.getChildren().clear();
+        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.cedula());
+        for (ProductoDto producto : productos) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/publicaciones.fxml"));
+            AnchorPane anchorPane = loader.load();
+            PublicacionViewController controller = loader.getController();
+            controller.setData(producto);
+            gridPanePublicaciones.add(anchorPane, columnas, filas);
+            filas++;
+        }
+    }
+
+    public void mostrarProductos() throws IOException {
         int columnas = 0;
         int filas = 0;
         gridPaneProductos.getChildren().clear();
