@@ -26,7 +26,7 @@ public class ProductoViewController {
         imagenProducto.setImage(new Image(getClass().getResource(producto.imagen()).toExternalForm()));
         labelNombre.setText(producto.nombre());
         labelDescripcion.setText(producto.categoria());
-        labelPrecio.setText(producto.precio());
+        labelPrecio.setText("$" + producto.precio());
         this.producto = producto;
     }
 }

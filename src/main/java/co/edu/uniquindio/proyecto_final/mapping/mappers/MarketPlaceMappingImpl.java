@@ -9,6 +9,7 @@ import co.edu.uniquindio.proyecto_final.service.IMarketPlaceMappingImplServices;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
@@ -60,5 +61,13 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
                 .precio(productoDto.precio())
                 .estado(productoDto.estado())
                 .build();
+    }
+
+    public List<VendedorDto> vendedoresToVendedoresDto(LinkedList<Vendedor> vendedores) {
+        List<VendedorDto> vendedoresDto = new ArrayList<>();
+        for (Vendedor vendedor : vendedores) {
+            vendedoresDto.add(VendedorToVendedorDto(vendedor));
+        }
+        return vendedoresDto;
     }
 }

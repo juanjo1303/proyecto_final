@@ -29,6 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
@@ -65,6 +66,9 @@ public class VendedorViewController implements Initializable, Observer {
 
     @FXML
     private Button buttonEliminarVendedor;
+
+    @FXML
+    private Label labelName;
 
     @FXML
     private Button buttonLogOut;
@@ -129,8 +133,28 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onVendedores(ActionEvent event) {
+    void onVendedores(ActionEvent event) throws IOException {
         tabPane.getSelectionModel().select(tabVendedores);
+        mostrarVendedores();
+    }
+
+    public void mostrarVendedores() throws IOException {
+        int columnas = 0;
+        int filas = 0;
+        gridPaneVendedores.getChildren().clear();
+        List<VendedorDto> vendedores = vendedorController.getListaVendedoresDto(vendedor.cedula());
+        for (VendedorDto vendedor : vendedores) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/vendedor-target-view.fxml"));
+            AnchorPane anchorPane = loader.load();
+            VendedorTargetViewController controller = loader.getController();
+            controller.setData(vendedor);
+            gridPaneVendedores.add(anchorPane, columnas, filas);
+            columnas++;
+            if (columnas > 3) {
+                columnas = 0;
+                filas++;
+            }
+        }
     }
 
     @FXML
@@ -174,7 +198,17 @@ public class VendedorViewController implements Initializable, Observer {
         stage.show();
     }
 
-
+    @FXML
+    void onModificarProducto(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/modificar-producto.fxml"));
+        Scene scene = new Scene(loader.load(), 520,651);
+        ModificarProductoViewController controller = loader.getController();
+        controller.setVendedor(vendedor);
+        controller.addObserver(this);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void onAgregarPublicacion(ActionEvent event) {
@@ -260,11 +294,6 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onModificarProducto(ActionEvent event) {
-
-    }
-
-    @FXML
     void onModificarPublicacion(ActionEvent event) {
 
     }
@@ -302,6 +331,8 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
 
-
+    public void setNombreScena() {
+        labelName.setText(vendedor.nombre().toUpperCase());
+    }
 }
 

@@ -65,6 +65,11 @@
             <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
             <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
+            <Label fx:id="labelName" alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="99.0" prefWidth="221.0" text="Nombre del pato" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <TabPane fx:id="tabPane" layoutX="283.0" layoutY="-30.0" prefHeight="712.0" prefWidth="736.0" tabClosingPolicy="UNAVAILABLE">

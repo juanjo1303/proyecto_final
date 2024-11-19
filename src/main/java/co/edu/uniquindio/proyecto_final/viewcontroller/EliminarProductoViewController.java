@@ -94,6 +94,9 @@ public class EliminarProductoViewController implements Observable {
         assert tcEstado != null : "fx:id=\"tcEstado\" was not injected: check your FXML file 'eliminar-producto.fxml'.";
         assert tcNombre != null : "fx:id=\"tcNombre\" was not injected: check your FXML file 'eliminar-producto.fxml'.";
         assert tcPrecio != null : "fx:id=\"tcPrecio\" was not injected: check your FXML file 'eliminar-producto.fxml'.";
+        imageProducto.setFitWidth(150);
+        imageProducto.setFitHeight(150);
+        imageProducto.setPreserveRatio(true);
         eliminarProductoController = new EliminarProductoController();
         observerSet = new HashSet<>();
         initView();

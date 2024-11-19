@@ -40,11 +40,38 @@ public class ModelFactory implements IModelFactoryServices {
                 .contrasena("1234")
                 .build();
 
+        Vendedor vendedor1 = Vendedor.builder()
+                .nombre("Sebastian")
+                .apellido("Quintero")
+                .cedula("1005089187")
+                .direccion("Mi casa")
+                .usuario("Chupamatracas5000")
+                .contrasena("1234")
+                .build();
+
+        Vendedor vendedor2 = Vendedor.builder()
+                .nombre("Juanjojito")
+                .apellido("Pachito")
+                .cedula("0001")
+                .direccion("La casa de el")
+                .usuario("Pls_dont_commit")
+                .contrasena("1234")
+                .build();
+
+        Vendedor vendedor3 = Vendedor.builder()
+                .nombre("Daniel")
+                .apellido("Garcia")
+                .cedula("0002")
+                .direccion("Daniel's house")
+                .usuario("GucciMadrasso")
+                .contrasena("1234")
+                .build();
+
         Producto producto1 = Producto.builder()
                 .nombre("Carro")
                 .imagen("/co/edu/uniquindio/images/carro.jpg")
                 .categoria("Vehiculo")
-                .precio("$10000")
+                .precio("10000")
                 .estado(Estado.PUBLICADO)
                 .build();
 
@@ -52,7 +79,7 @@ public class ModelFactory implements IModelFactoryServices {
                 .nombre("Pollo")
                 .imagen("/co/edu/uniquindio/images/pollo.jpg")
                 .categoria("Comida")
-                .precio("$50")
+                .precio("50")
                 .estado(Estado.PUBLICADO)
                 .build();
 
@@ -60,17 +87,37 @@ public class ModelFactory implements IModelFactoryServices {
                 .nombre("Bate")
                 .imagen("/co/edu/uniquindio/images/bate.jpg")
                 .categoria("Deporte")
-                .precio("$900")
+                .precio("900")
                 .estado(Estado.PUBLICADO)
                 .build();
 
         vendedor0.getListProducto().add(producto1);
         vendedor0.getListProducto().add(producto2);
         vendedor0.getListProducto().add(producto3);
+        vendedor0.getListVendedores().add(vendedor1);
+        vendedor0.getListVendedores().add(vendedor2);
+        vendedor0.getListVendedores().add(vendedor3);
+        marketPlace.getProductos().add(producto1);
+        marketPlace.getProductos().add(producto2);
+        marketPlace.getProductos().add(producto3);
 
         marketPlace.getVendedores().add(vendedor0);
+        marketPlace.getVendedores().add(vendedor1);
+        marketPlace.getVendedores().add(vendedor2);
+        marketPlace.getVendedores().add(vendedor3);
 
         return marketPlace;
+    }
+
+    @Override
+    public boolean verificarNombreExistente(ProductoDto productoDto) {
+        return marketPlace.verificarNombreExistente(productoDto.nombre());
+    }
+
+    @Override
+    public boolean actualizarProducto(ProductoDto productoDto, VendedorDto vendedorDto) {
+        Producto newProducto = mapper.productoDtoToProducto(productoDto);
+        return marketPlace.actualizarProducto(newProducto, vendedorDto);
     }
 
     @Override
@@ -125,5 +172,10 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public List<ProductoDto> getListaProductosDto(String id) {
         return mapper.ProductosToProductosDto(marketPlace.getProductos(id));
+    }
+
+    @Override
+    public List<VendedorDto> getListaVendedoresDto(String id) {
+        return mapper.vendedoresToVendedoresDto(marketPlace.getVendedores(id));
     }
 }

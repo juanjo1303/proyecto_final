@@ -98,9 +98,13 @@ public class AgregarProductoViewController implements Observable {
         boolean estado = false;
         if(camposVacios() == true){
             if(verificarPrecio() == true){
-                productoDto = buildDtoProducto();
-                agregarProductoController.crearProducto(productoDto,vendedorDto);
-                estado = true;
+                if(verificarNombre() == false){
+                    productoDto = buildDtoProducto();
+                    agregarProductoController.crearProducto(productoDto,vendedorDto);
+                    estado = true;
+                }else {
+                    mostrarAlertaNombreExistente();
+                }
             }else {
                 mostrarAlertaPrecioCaracterInvalido();
             }
@@ -108,6 +112,19 @@ public class AgregarProductoViewController implements Observable {
             mostarAlertaDatosVacios();
         }
         return estado;
+    }
+
+    private void mostrarAlertaNombreExistente() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Nombre Existente");
+        alerta.setHeaderText("El nombre ya existe");
+        alerta.setContentText("Por favor escriba otro nombre");
+        alerta.showAndWait();
+    }
+
+    private boolean verificarNombre() {
+        ProductoDto newProducto = buildDtoProducto();
+        return  agregarProductoController.verificarNombreExistente(newProducto);
     }
 
     private void mostrarAlertaPrecioCaracterInvalido() {

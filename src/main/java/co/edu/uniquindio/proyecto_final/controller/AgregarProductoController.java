@@ -13,6 +13,11 @@ public class AgregarProductoController implements IAgregarProductoController {
     }
 
     @Override
+    public boolean verificarNombreExistente(ProductoDto productoDto) {
+        return modelFactory.verificarNombreExistente(productoDto);
+    }
+
+    @Override
     public boolean crearProducto(ProductoDto productoDto, VendedorDto vendedorDto) {
         return modelFactory.crearProducto(productoDto, vendedorDto);
     }

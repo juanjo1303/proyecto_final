@@ -74,6 +74,8 @@ public class LoginViewController implements Initializable{
             Scene scene = new Scene(loader.load());
             VendedorViewController controller = loader.getController();
             controller.setVendedor(vendedorController.getVendedor(cedula));
+            controller.setNombreScena();
+            controller.mostrarVendedores();
             Stage currentStage = (Stage) registroButton.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();

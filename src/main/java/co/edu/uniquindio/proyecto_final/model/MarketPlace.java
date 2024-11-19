@@ -2,11 +2,12 @@ package co.edu.uniquindio.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
+import co.edu.uniquindio.proyecto_final.service.ICrudProducto;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class MarketPlace {
+public class MarketPlace implements ICrudProducto {
     private String nombre;
     private LinkedList<Producto> productos = new LinkedList<>();
     private LinkedList<Vendedor> vendedores = new LinkedList<>();
@@ -47,8 +48,11 @@ public class MarketPlace {
         this.productos = productos;
     }
 
-    public LinkedList<Vendedor> getVendedores() {
-        return vendedores;
+    public LinkedList<Vendedor> getVendedores(){ return vendedores; }
+
+    public LinkedList<Vendedor> getVendedores(String id) {
+        Vendedor v = getVendedor(id);
+        return v.getListVendedores();
     }
 
     public void setVendedores(LinkedList<Vendedor> vendedores) {
@@ -115,6 +119,7 @@ public class MarketPlace {
         return cedula;
     }
 
+    @Override
     public boolean crearProducto(Producto newProducto, VendedorDto vendedorDto) {
         productos.add(newProducto);
         for(Vendedor vendedor : vendedores){
@@ -143,6 +148,46 @@ public class MarketPlace {
             }
         }
         return eliminado;
+    }
+
+    @Override
+    public boolean actualizarProducto(Producto newProducto, VendedorDto vendedorDto) {
+        boolean estado = false;
+        for(Producto producto : productos){
+            if(producto.getNombre().equals(newProducto.getNombre())){
+                producto.setCategoria(newProducto.getCategoria());
+                producto.setPrecio(newProducto.getPrecio());
+                producto.setEstado(newProducto.getEstado());
+                estado = true;
+            }
+        }
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(vendedorDto.cedula())){
+                estado = vendedor.actualizarProducto(newProducto);
+            }
+        }
+        return estado;
+    }
+
+    @Override
+    public Producto getProducto(String nombre) {
+        Producto newProducto = null;
+        for(Producto producto : productos){
+            if(producto.getNombre().equals(nombre)){
+               newProducto = producto;
+            }
+        }
+        return newProducto;
+    }
+
+    public boolean verificarNombreExistente(String nombre) {
+        boolean existe = false;
+        for(Producto producto : productos){
+            if(producto.getNombre().equals(nombre)){
+                existe = true;
+            }
+        }
+        return existe;
     }
 }
 

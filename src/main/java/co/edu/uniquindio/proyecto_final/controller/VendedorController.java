@@ -22,4 +22,9 @@ public class VendedorController implements IVendedorControllerServices {
     public List<ProductoDto> getListaProductosDto(String id) {
         return modelFactory.getListaProductosDto(id);
     }
+
+    @Override
+    public List<VendedorDto> getListaVendedoresDto(String id) {
+        return modelFactory.getListaVendedoresDto(id);
+    }
 }

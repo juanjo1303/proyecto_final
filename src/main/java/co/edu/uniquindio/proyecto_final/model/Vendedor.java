@@ -100,4 +100,18 @@ public class Vendedor {
     public void eliminarProducto(Producto producto) {
         listProducto.remove(producto);
     }
+
+    public boolean actualizarProducto(Producto newProducto) {
+        boolean estado = false;
+        for(Producto producto: listProducto){
+            if(producto.getNombre().equals(newProducto.getNombre())){
+                producto.setCategoria(newProducto.getCategoria());
+                producto.setPrecio(newProducto.getPrecio());
+                producto.setEstado(newProducto.getEstado());
+                estado = true;
+
+            }
+        }
+        return estado;
+    }
 }

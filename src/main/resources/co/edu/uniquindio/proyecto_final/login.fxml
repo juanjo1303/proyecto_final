@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.LoginViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.LoginViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="220.0" style="-fx-background-color: #000000;">
          <children>
@@ -36,7 +37,6 @@
          </font>
       </Label>
       <TextField fx:id="usuarioTxt" layoutX="363.0" layoutY="132.0" prefHeight="26.0" prefWidth="157.0" promptText="Usuario" />
-      <TextField fx:id="contrasenaTxt" layoutX="363.0" layoutY="172.0" prefHeight="26.0" prefWidth="158.0" promptText="Contraseña" />
       <Button fx:id="entrarLoginButton" layoutX="283.0" layoutY="220.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onIniciarSesion" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE" />
       <ImageView fitHeight="85.0" fitWidth="185.0" layoutX="339.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,5 +49,6 @@
          </font>
       </Label>
       <Button fx:id="registroButton" layoutX="283.0" layoutY="313.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onResgistrarse" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #000000;" text="Crear cuenta" textFill="WHITE" />
+      <PasswordField fx:id="contrasenaTxt" layoutX="363.0" layoutY="172.0" prefHeight="26.0" prefWidth="158.0" promptText="Contraseña" />
    </children>
 </AnchorPane>

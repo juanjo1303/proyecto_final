@@ -8,4 +8,5 @@ import java.util.List;
 public interface IVendedorControllerServices {
     VendedorDto getVendedor(String cedula);
     List<ProductoDto> getListaProductosDto(String id);
+    List<VendedorDto> getListaVendedoresDto(String id);
 }
