@@ -113,7 +113,6 @@
                               </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <Button fx:id="buttonModificarVendedor1" layoutX="378.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.rightAnchor="255.0" />
                         <Button fx:id="buttonEliminarVendedor" layoutX="501.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarVendedor" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>

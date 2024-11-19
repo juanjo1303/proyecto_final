@@ -20,4 +20,7 @@ public interface IModelFactoryServices {
     VendedorDto getVendedor(String id);
     List<ProductoDto> getListaProductosDto(String id);
     List<VendedorDto> getListaVendedoresDto(String id);
+    List<VendedorDto> getListaVendedoresDtoTotal(VendedorDto vendedorDto);
+    boolean verificarAmigo(VendedorDto vendedorDto, String cedula);
+    void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo);
 }

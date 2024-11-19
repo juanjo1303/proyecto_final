@@ -114,4 +114,18 @@ public class Vendedor {
         }
         return estado;
     }
+
+    public boolean verificarAmigo(String cedula) {
+        boolean estado = true;
+        for(Vendedor vendedor: listVendedores){
+            if(vendedor.getCedula().equals(cedula)){
+                estado = false;
+            }
+        }
+        return estado;
+    }
+
+    public void agregarAmigo(Vendedor vendedorAmigo) {
+        listVendedores.add(vendedorAmigo);
+    }
 }

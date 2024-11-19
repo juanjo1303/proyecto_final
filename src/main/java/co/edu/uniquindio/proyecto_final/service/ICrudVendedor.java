@@ -6,7 +6,6 @@ import java.util.LinkedList;
 public interface ICrudVendedor {
     boolean crearVendedor(Vendedor newVendedor);
     boolean eliminarVendedor(String cedula);
-    boolean actualizarProducto(String cedula, VendedorBuilder vendedorBuilder);
     Vendedor getVendedorCrud(String cedula);
     LinkedList<Vendedor> getListVendedorsCrud();
 }

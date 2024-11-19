@@ -72,7 +72,6 @@ public class EliminarProductoViewController implements Observable {
     @FXML
     void onEliminar(ActionEvent event) throws IOException {
         validacionFinal(event);
-
     }
 
     private void validacionFinal(ActionEvent event) throws IOException {

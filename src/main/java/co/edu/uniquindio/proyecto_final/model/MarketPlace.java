@@ -189,5 +189,28 @@ public class MarketPlace implements ICrudProducto {
         }
         return existe;
     }
+
+    public boolean verificarAmigo(String cedula, String cedulaAmigo) {
+        boolean existe = true;
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(cedula)){
+                existe = vendedor.verificarAmigo(cedulaAmigo);
+
+            }
+        }
+        return existe;
+    }
+
+    public void agregarVendedor(String cedula, String cedulaAmigo) {
+        for (Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(cedula)){
+                for (Vendedor vendedorAmigo : vendedores){
+                    if(vendedorAmigo.getCedula().equals(cedulaAmigo)){
+                        vendedor.agregarAmigo(vendedorAmigo);
+                    }
+                }
+            }
+        }
+    }
 }
 

@@ -10,6 +10,7 @@ import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.model.Vendedor;
 import co.edu.uniquindio.proyecto_final.service.IModelFactoryServices;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelFactory implements IModelFactoryServices {
@@ -94,9 +95,8 @@ public class ModelFactory implements IModelFactoryServices {
         vendedor0.getListProducto().add(producto1);
         vendedor0.getListProducto().add(producto2);
         vendedor0.getListProducto().add(producto3);
-        vendedor0.getListVendedores().add(vendedor1);
-        vendedor0.getListVendedores().add(vendedor2);
-        vendedor0.getListVendedores().add(vendedor3);
+        vendedor0.agregarAmigo(vendedor1);
+        vendedor0.agregarAmigo(vendedor2);
         marketPlace.getProductos().add(producto1);
         marketPlace.getProductos().add(producto2);
         marketPlace.getProductos().add(producto3);
@@ -177,5 +177,27 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public List<VendedorDto> getListaVendedoresDto(String id) {
         return mapper.vendedoresToVendedoresDto(marketPlace.getVendedores(id));
+    }
+
+    @Override
+    public List<VendedorDto> getListaVendedoresDtoTotal(VendedorDto vendedorDto) {
+        List<VendedorDto> lista = mapper.vendedoresToVendedoresDto(marketPlace.getVendedores());
+        for (VendedorDto vendedor : lista) {
+            if(vendedorDto.cedula().equals(vendedor.cedula())){
+                lista.remove(vendedor);
+                break;
+            }
+        }
+        return lista;
+    }
+
+    @Override
+    public boolean verificarAmigo(VendedorDto vendedorDto, String cedula) {
+        return marketPlace.verificarAmigo(vendedorDto.cedula(),cedula);
+    }
+
+    @Override
+    public void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo) {
+        marketPlace.agregarVendedor(vendedorDto.cedula(),vendedorDtoAmigo.cedula());
     }
 }

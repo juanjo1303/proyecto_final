@@ -82,8 +82,6 @@ public class VendedorViewController implements Initializable, Observer {
     @FXML
     private Button buttonModificarPublicacion;
 
-    @FXML
-    private Button buttonModificarVendedor;
 
     @FXML
     private Button buttonMuro;
@@ -171,6 +169,7 @@ public class VendedorViewController implements Initializable, Observer {
     @Override
     public void update() throws IOException{
         mostrarPublicaciones();
+        mostrarVendedores();
     }
 
     @FXML
@@ -183,7 +182,6 @@ public class VendedorViewController implements Initializable, Observer {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        System.out.print(controller.getVendedor());
     }
 
     @FXML
@@ -216,8 +214,15 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onAgregarVendedor(ActionEvent event) {
-
+    void onAgregarVendedor(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-vendedor.fxml"));
+        Scene scene = new Scene(loader.load(), 520,651);
+        AgregarVendedorViewController controller = loader.getController();
+        controller.setVendedor(vendedor);
+        controller.addObserver(this);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void mostrarPublicaciones() throws IOException {
@@ -297,12 +302,6 @@ public class VendedorViewController implements Initializable, Observer {
     void onModificarPublicacion(ActionEvent event) {
 
     }
-
-    @FXML
-    void onModificarVendedor(ActionEvent event) {
-
-    }
-
 
     @FXML
     void initialize() {
