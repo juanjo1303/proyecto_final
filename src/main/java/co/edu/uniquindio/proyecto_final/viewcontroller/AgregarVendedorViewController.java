@@ -37,6 +37,9 @@ public class AgregarVendedorViewController implements Observable {
     private URL location;
 
     @FXML
+    private Button bttnEliminar;
+
+    @FXML
     private Button bttnAgregar;
 
     @FXML
@@ -56,6 +59,11 @@ public class AgregarVendedorViewController implements Observable {
 
     @FXML
     private TableColumn<VendedorDto, String> tcNombre;
+
+    @FXML
+    void onEliminar(ActionEvent event) {
+
+    }
 
     @FXML
     void onAgregar(ActionEvent event) throws IOException {

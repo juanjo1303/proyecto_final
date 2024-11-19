@@ -18,14 +18,14 @@
                         <Image url="@../images/securelogo.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="108.0" layoutY="28.0" text="Agregar Vendedor" textFill="WHITE">
+                <Label layoutX="108.0" layoutY="28.0" text="Gestionar Amigos" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <Button fx:id="bttnAgregar" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Agregar" textFill="WHITE">
+        <Button fx:id="bttnAgregar" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #000000;" text="Agregar" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
@@ -46,5 +46,10 @@
             <Image url="@../images/user.png" />
          </image>
       </ImageView>
+      <Button fx:id="bttnEliminar" layoutX="270.0" layoutY="561.0" mnemonicParsing="false" onAction="#onEliminar" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #000000;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

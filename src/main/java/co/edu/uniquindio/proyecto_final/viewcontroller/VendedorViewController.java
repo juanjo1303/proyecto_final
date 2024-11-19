@@ -65,9 +65,6 @@ public class VendedorViewController implements Initializable, Observer {
     private Button buttonEliminarPublicacion;
 
     @FXML
-    private Button buttonEliminarVendedor;
-
-    @FXML
     private Label labelName;
 
     @FXML
