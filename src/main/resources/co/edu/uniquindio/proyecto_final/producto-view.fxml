@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.ProductoViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="174.0" layoutX="5.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="141.0" />
-      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="17.0" prefHeight="153.0" prefWidth="121.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="14.0" layoutY="17.0" prefHeight="153.0" prefWidth="122.0">
          <children>
             <Label fx:id="labelNombre" alignment="CENTER" prefHeight="12.0" prefWidth="78.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE">
                <VBox.margin>
@@ -28,7 +28,7 @@
             </ImageView>
             <Label fx:id="labelDescripcion" alignment="CENTER" prefHeight="14.0" prefWidth="107.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="JUSTIFY" wrapText="true">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" />
                </VBox.margin>
                <font>
                   <Font size="8.0" />
@@ -36,11 +36,19 @@
             </Label>
             <Label fx:id="labelPrecio" alignment="CENTER" prefHeight="12.0" prefWidth="58.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" />
                </VBox.margin>
                <font>
                   <Font size="8.0" />
                </font>
+            </Label>
+            <Label fx:id="labelEstado" alignment="CENTER" prefHeight="12.0" prefWidth="58.0" style="-fx-background-color: #000000;" text="Estado" textAlignment="JUSTIFY" textFill="WHITE" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="8.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>

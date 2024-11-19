@@ -27,4 +27,9 @@ public class AgregarVendedorController implements IAgregarVendedorControllerServ
     public void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo) {
         modelFactory.agregarVendedor(vendedorDto, vendedorDtoAmigo);
     }
+
+    @Override
+    public void eliminarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo) {
+        modelFactory.eliminarVendedor(vendedorDto, vendedorDtoAmigo);
+    }
 }

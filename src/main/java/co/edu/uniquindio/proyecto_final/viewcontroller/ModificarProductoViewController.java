@@ -97,7 +97,6 @@ public class ModificarProductoViewController implements Observable {
 
         tableProducto.refresh();
         limpiarSeleccion();
-
     }
 
     private void limpiarSeleccion() {

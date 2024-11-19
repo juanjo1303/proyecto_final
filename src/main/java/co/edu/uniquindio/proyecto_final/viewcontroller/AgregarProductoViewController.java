@@ -183,25 +183,6 @@ public class AgregarProductoViewController implements Observable {
         seleccionarImagen();
     }
 
-    /*private void seleccionarImagen() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Seleccionar imagen");
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "png", "jpg", "jpeg"));
-
-        int resultado = fileChooser.showOpenDialog(null);
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File archivoImagen = fileChooser.getSelectedFile();
-            try {
-                Image imagen = new Image(new FileInputStream(archivoImagen));
-                imagenProducto.setImage(imagen);
-                imageUrl = imageUrl + archivoImagen.getName();
-                System.out.print(imageUrl);
-            } catch (FileNotFoundException e) {
-                mostrarAlertaImagenInvalida();
-            }
-        }
-    }*/
-
     private void seleccionarImagen() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen");

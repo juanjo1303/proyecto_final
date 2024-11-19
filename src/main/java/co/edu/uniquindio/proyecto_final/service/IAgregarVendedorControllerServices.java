@@ -8,4 +8,5 @@ public interface IAgregarVendedorControllerServices {
     List<VendedorDto> getListaVendedoresDtoTotal(VendedorDto vendedorDto);
     boolean verificarAmigo(VendedorDto vendedorDto,String cedula);
     void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo);
+    void eliminarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo);
 }

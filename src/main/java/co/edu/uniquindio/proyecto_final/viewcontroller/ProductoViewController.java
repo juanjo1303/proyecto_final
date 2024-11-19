@@ -20,6 +20,9 @@ public class ProductoViewController {
     @FXML
     private Label labelPrecio;
 
+    @FXML
+    private Label labelEstado;
+
     ProductoDto producto;
 
     public void setData(ProductoDto producto) {
@@ -27,6 +30,7 @@ public class ProductoViewController {
         labelNombre.setText(producto.nombre());
         labelDescripcion.setText(producto.categoria());
         labelPrecio.setText("$" + producto.precio());
+        labelEstado.setText(producto.estado().toString());
         this.producto = producto;
     }
 }

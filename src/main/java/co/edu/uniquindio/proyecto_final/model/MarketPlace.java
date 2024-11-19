@@ -212,5 +212,17 @@ public class MarketPlace implements ICrudProducto {
             }
         }
     }
+
+    public void eliminarVendedor(String cedula, String cedulaAmigo) {
+        for (Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(cedula)){
+                for (Vendedor vendedorAmigo : vendedores){
+                    if(vendedorAmigo.getCedula().equals(cedulaAmigo)){
+                        vendedor.eliminarAmigo(vendedorAmigo);
+                    }
+                }
+            }
+        }
+    }
 }
 

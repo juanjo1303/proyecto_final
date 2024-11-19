@@ -61,8 +61,31 @@ public class AgregarVendedorViewController implements Observable {
     private TableColumn<VendedorDto, String> tcNombre;
 
     @FXML
-    void onEliminar(ActionEvent event) {
+    void onEliminar(ActionEvent event) throws IOException {
+        if(verificacionFinalEliminar()){
+            this.notifyObservers();
+        }
+    }
 
+    private boolean verificacionFinalEliminar() {
+        boolean estado = false;
+        if(selectedVendedor != null){
+            if(!verificarAmigo()){
+                agregarVendedorController.eliminarVendedor(vendedorDto,selectedVendedor);
+                estado = true;
+            }else {
+                mostrarAlertaAmigoInexistente();
+            }
+        }
+        return estado;
+    }
+
+    private void mostrarAlertaAmigoInexistente() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Amigo Inexistente");
+        alerta.setHeaderText("Aún no es amigo de este vendedor");
+        alerta.setContentText("Por favor seleccione otro vendedor");
+        alerta.showAndWait();
     }
 
     @FXML

@@ -200,4 +200,9 @@ public class ModelFactory implements IModelFactoryServices {
     public void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo) {
         marketPlace.agregarVendedor(vendedorDto.cedula(),vendedorDtoAmigo.cedula());
     }
+
+    @Override
+    public void eliminarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo) {
+        marketPlace.eliminarVendedor(vendedorDto.cedula(),vendedorDtoAmigo.cedula());
+    }
 }

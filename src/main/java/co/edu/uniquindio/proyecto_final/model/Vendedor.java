@@ -128,4 +128,8 @@ public class Vendedor {
     public void agregarAmigo(Vendedor vendedorAmigo) {
         listVendedores.add(vendedorAmigo);
     }
+
+    public void eliminarAmigo(Vendedor vendedorAmigo) {
+        listVendedores.remove(vendedorAmigo);
+    }
 }
