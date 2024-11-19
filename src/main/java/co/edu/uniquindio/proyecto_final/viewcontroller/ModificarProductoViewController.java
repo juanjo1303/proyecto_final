@@ -195,7 +195,6 @@ public class ModificarProductoViewController implements Observable {
             precioTxt.setText(selectedProduct.precio());
             cbEstado.setValue(selectedProduct.estado());
         }
-
     }
 
     @Override

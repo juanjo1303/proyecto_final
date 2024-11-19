@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
+import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.service.Observer;
@@ -167,6 +168,7 @@ public class VendedorViewController implements Initializable, Observer {
     public void update() throws IOException{
         mostrarProductos();
         mostrarVendedores();
+        mostrarPublicaciones();
     }
 
     @FXML
@@ -206,9 +208,18 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onAgregarPublicacion(ActionEvent event) {
-
+    void onAgregarPublicacion(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-publicacion.fxml"));
+        Scene scene = new Scene(loader.load(), 520,651);
+        AgregarPublicacionViewController controller = loader.getController();
+        controller.setVendedor(vendedor);
+        controller.addObserver(this);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
+
+
 
     @FXML
     void onAgregarVendedor(ActionEvent event) throws IOException {
@@ -226,12 +237,12 @@ public class VendedorViewController implements Initializable, Observer {
         int columnas = 0;
         int filas = 0;
         gridPanePublicaciones.getChildren().clear();
-        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.cedula());
-        for (ProductoDto producto : productos) {
+        List<PublicacionDto> publicaciones = vendedorController.getListaPublicacionesDto();
+        for (PublicacionDto publicacionDto : publicaciones) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/publicaciones.fxml"));
             AnchorPane anchorPane = loader.load();
             PublicacionViewController controller = loader.getController();
-            controller.setData(producto);
+            controller.setData(publicacionDto);
             gridPanePublicaciones.add(anchorPane, columnas, filas);
             filas++;
         }
@@ -302,11 +313,6 @@ public class VendedorViewController implements Initializable, Observer {
 
     @FXML
     void onEliminarPublicacion(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onEliminarVendedor(ActionEvent event) {
 
     }
 

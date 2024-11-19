@@ -224,5 +224,14 @@ public class MarketPlace implements ICrudProducto {
             }
         }
     }
+
+    public void agregarPublicación(Publicacion newPublicacion) {
+        publicaciones.add(newPublicacion);
+        for(Vendedor vendedor : vendedores){
+            if(vendedor.getCedula().equals(newPublicacion.getVendedor().getCedula())){
+                vendedor.agregarPublicacion(newPublicacion);
+            }
+        }
+    }
 }
 

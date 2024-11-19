@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto_final.service;
 
+import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
@@ -24,4 +25,6 @@ public interface IModelFactoryServices {
     boolean verificarAmigo(VendedorDto vendedorDto, String cedula);
     void agregarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo);
     void eliminarVendedor(VendedorDto vendedorDto, VendedorDto vendedorDtoAmigo);
+    List<PublicacionDto> getListaPublicacionesDto();
+    void agregarPublicacion(PublicacionDto publicacionDto);
 }

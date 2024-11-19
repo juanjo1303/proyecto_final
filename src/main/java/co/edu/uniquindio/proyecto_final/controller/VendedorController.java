@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_final.controller;
 
 import co.edu.uniquindio.proyecto_final.factory.ModelFactory;
+import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.service.IVendedorControllerServices;
@@ -26,5 +27,10 @@ public class VendedorController implements IVendedorControllerServices {
     @Override
     public List<VendedorDto> getListaVendedoresDto(String id) {
         return modelFactory.getListaVendedoresDto(id);
+    }
+
+    @Override
+    public List<PublicacionDto> getListaPublicacionesDto() {
+        return modelFactory.getListaPublicacionesDto();
     }
 }

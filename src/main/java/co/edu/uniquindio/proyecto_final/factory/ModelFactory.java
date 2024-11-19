@@ -1,13 +1,11 @@
 package co.edu.uniquindio.proyecto_final.factory;
 
+import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.mappers.MarketPlaceMappingImpl;
-import co.edu.uniquindio.proyecto_final.model.Estado;
-import co.edu.uniquindio.proyecto_final.model.MarketPlace;
-import co.edu.uniquindio.proyecto_final.model.Producto;
-import co.edu.uniquindio.proyecto_final.model.Vendedor;
+import co.edu.uniquindio.proyecto_final.model.*;
 import co.edu.uniquindio.proyecto_final.service.IModelFactoryServices;
 
 import java.util.ArrayList;
@@ -177,6 +175,17 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public List<VendedorDto> getListaVendedoresDto(String id) {
         return mapper.vendedoresToVendedoresDto(marketPlace.getVendedores(id));
+    }
+
+    @Override
+    public List<PublicacionDto> getListaPublicacionesDto() {
+        return mapper.publicacionesToPublicacionesDto(marketPlace.getPublicaciones());
+    }
+
+    @Override
+    public void agregarPublicacion(PublicacionDto publicacionDto) {
+        Publicacion newPublicacion = mapper.publicacionDtoToPublicacion(publicacionDto);
+        marketPlace.agregarPublicación(newPublicacion);
     }
 
     @Override

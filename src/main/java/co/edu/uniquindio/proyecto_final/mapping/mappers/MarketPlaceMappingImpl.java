@@ -1,8 +1,10 @@
 package co.edu.uniquindio.proyecto_final.mapping.mappers;
 
+import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.model.Producto;
+import co.edu.uniquindio.proyecto_final.model.Publicacion;
 import co.edu.uniquindio.proyecto_final.model.Vendedor;
 import co.edu.uniquindio.proyecto_final.model.builder.ProductoBuilder;
 import co.edu.uniquindio.proyecto_final.service.IMarketPlaceMappingImplServices;
@@ -60,6 +62,28 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
                 .categoria(productoDto.categoria())
                 .precio(productoDto.precio())
                 .estado(productoDto.estado())
+                .build();
+    }
+
+    @Override
+    public List<PublicacionDto> publicacionesToPublicacionesDto(LinkedList<Publicacion> publicaciones) {
+        List<PublicacionDto> publicacionesDto = new ArrayList<>();
+        for (Publicacion publicacion : publicaciones) {
+            publicacionesDto.add(publicacionToPublicacionDto(publicacion));
+        }
+        return publicacionesDto;
+    }
+
+    @Override
+    public PublicacionDto publicacionToPublicacionDto(Publicacion publicacion) {
+        return new PublicacionDto(VendedorToVendedorDto(publicacion.getVendedor()),ProductoToProductoDto(publicacion.getProducto()),publicacion.getDescripcion());
+    }
+
+    public Publicacion publicacionDtoToPublicacion(PublicacionDto publicacionDto) {
+        return Publicacion.builder()
+                .vendedor(vendedorDtoToVendedor(publicacionDto.vendedor()))
+                .producto(productoDtoToProducto(publicacionDto.producto()))
+                .descripcion(publicacionDto.descripcion())
                 .build();
     }
 

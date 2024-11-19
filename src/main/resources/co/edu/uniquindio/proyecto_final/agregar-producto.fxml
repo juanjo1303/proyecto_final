@@ -31,12 +31,12 @@
             </font>
         </Label>
         <TextField fx:id="nombreTextField" layoutX="92.0" layoutY="126.0" prefWidth="336.0" promptText="Nombre" />
-        <Label layoutX="87.0" layoutY="162.0" text="Categoria" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="377.0" AnchorPane.topAnchor="164.0">
+        <Label layoutX="87.0" layoutY="162.0" text="Categoría" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="377.0" AnchorPane.topAnchor="164.0">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="categoriaTextField" layoutX="92.0" layoutY="189.0" prefWidth="336.0" promptText="Categoria" />
+        <TextField fx:id="categoriaTextField" layoutX="92.0" layoutY="189.0" prefWidth="336.0" promptText="Categoría" />
         <Label layoutX="85.0" layoutY="227.0" text="Precio" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="227.0">
             <font>
                 <Font size="13.0" />

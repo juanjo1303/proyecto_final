@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.ModificarProductoViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.AgregarPublicacionViewController">
     <children>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="520.0" style="-fx-background-color: #000000;">
             <children>
@@ -21,14 +20,14 @@
                         <Image url="@../images/products.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="108.0" layoutY="28.0" text="Modificar Producto" textFill="WHITE">
+                <Label layoutX="108.0" layoutY="28.0" text="Agregar Publicación" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <Button fx:id="bttnModificar" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" onAction="#onModificar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Modificar" textFill="WHITE">
+        <Button fx:id="bttnAgregar" layoutX="92.0" layoutY="561.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #000000;" text="Agregar" textFill="WHITE">
             <font>
                 <Font size="14.0" />
             </font>
@@ -38,15 +37,15 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <TableView fx:id="tableProducto" layoutY="257.0" prefHeight="284.0" prefWidth="520.0">
+      <TableView fx:id="tableProducto" layoutY="316.0" prefHeight="236.0" prefWidth="520.0" AnchorPane.bottomAnchor="108.0" AnchorPane.topAnchor="307.0">
         <columns>
           <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoría" />
+          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
             <TableColumn fx:id="tcPrecio" prefWidth="75.0" text="Precio" />
             <TableColumn fx:id="tcEstado" prefWidth="75.0" text="Estado" />
         </columns>
       </TableView>
-      <ImageView fx:id="imageProducto" fitHeight="150.0" fitWidth="200.0" layoutX="337.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageProducto" fitHeight="150.0" fitWidth="200.0" layoutX="337.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lupa.png" />
          </image>
@@ -59,13 +58,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="nombreTxt" editable="false" layoutX="146.0" layoutY="92.0" prefHeight="26.0" prefWidth="158.0" promptText="Nombre" />
+      <TextField fx:id="nombreTxt" editable="false" layoutX="146.0" layoutY="92.0" prefHeight="26.0" prefWidth="158.0" promptText="Nombre" AnchorPane.topAnchor="92.0" />
       <Label layoutX="39.0" layoutY="138.0" text="Categoría">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="categoriaTxt" layoutX="146.0" layoutY="135.0" prefHeight="26.0" prefWidth="158.0" promptText="Categoría" />
+      <TextField fx:id="categoriaTxt" editable="false" layoutX="146.0" layoutY="135.0" prefHeight="26.0" prefWidth="158.0" promptText="Categoría" AnchorPane.topAnchor="135.0" />
       <Label layoutX="50.0" layoutY="181.0" text="Precio">
          <font>
             <Font size="14.0" />
@@ -76,7 +75,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbEstado" layoutX="146.0" layoutY="222.0" prefHeight="26.0" prefWidth="158.0" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="221.0" />
-      <TextField fx:id="precioTxt" layoutX="146.0" layoutY="178.0" prefHeight="26.0" prefWidth="158.0" promptText="Precio" />
+      <TextField fx:id="precioTxt" editable="false" layoutX="146.0" layoutY="178.0" prefHeight="26.0" prefWidth="158.0" promptText="Precio" AnchorPane.topAnchor="178.0" />
+      <TextField fx:id="descripcionTxt" layoutX="146.0" layoutY="260.0" prefHeight="26.0" prefWidth="158.0" promptText="Descripción" AnchorPane.bottomAnchor="361.0" AnchorPane.topAnchor="264.0" />
+      <Label layoutX="34.0" layoutY="267.0" text="Descripción">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="estadoTxt" editable="false" layoutX="146.0" layoutY="221.0" prefHeight="26.0" prefWidth="158.0" promptText="Estado" />
     </children>
 </AnchorPane>

@@ -8,26 +8,26 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.PublicacionViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.PublicacionViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="123.0" layoutX="5.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="727.0" />
       <ImageView fx:id="imagenProducto" fitHeight="86.0" fitWidth="135.0" layoutX="29.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="labelDescripcion" alignment="CENTER" layoutX="338.0" layoutY="25.0" prefHeight="86.0" prefWidth="145.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="JUSTIFY" wrapText="true">
+      <Label fx:id="labelDescripcion" alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="25.0" prefHeight="86.0" prefWidth="145.0" style="-fx-border-color: #000000;" styleClass="-fx-background-color" text="Descripcion" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="labelNombre" alignment="CENTER" layoutX="190.0" layoutY="25.0" prefHeight="18.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label fx:id="labelNombre" alignment="CENTER" layoutX="190.0" layoutY="16.0" prefHeight="18.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Nombre Producto" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="labelPrecio" alignment="CENTER" layoutX="225.0" layoutY="52.0" prefHeight="18.0" prefWidth="65.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label fx:id="labelPrecio" alignment="CENTER" layoutX="225.0" layoutY="42.0" prefHeight="18.0" prefWidth="65.0" style="-fx-background-color: #000000;" text="Precio" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.bottomAnchor="70.0" AnchorPane.topAnchor="42.0">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="labelEstado" alignment="CENTER" layoutX="224.0" layoutY="80.0" prefHeight="18.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Estado" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label fx:id="labelEstado" alignment="CENTER" layoutX="224.0" layoutY="70.0" prefHeight="18.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Estado" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.topAnchor="70.0">
          <font>
             <Font size="10.0" />
          </font>
@@ -46,6 +46,11 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="labelNumLikes" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="89.0" prefHeight="18.0" prefWidth="34.0" text="0" />
+      <Button fx:id="btnVendedor" contentDisplay="TOP" layoutX="190.0" layoutY="98.0" mnemonicParsing="false" onAction="#onVendedor" prefHeight="18.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Vendedor" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="98.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelNumLikes" alignment="CENTER" contentDisplay="CENTER" layoutX="666.0" layoutY="90.0" prefHeight="17.0" prefWidth="55.0" text="0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="666.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0" />
    </children>
 </AnchorPane>

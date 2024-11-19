@@ -38,7 +38,7 @@
       <TableView fx:id="tableProducto" layoutY="257.0" prefHeight="284.0" prefWidth="520.0">
         <columns>
           <TableColumn fx:id="tcNombre" prefWidth="75.0" text="Nombre" />
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
+          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoría" />
             <TableColumn fx:id="tcPrecio" prefWidth="75.0" text="Precio" />
             <TableColumn fx:id="tcEstado" prefWidth="75.0" text="Estado" />
         </columns>

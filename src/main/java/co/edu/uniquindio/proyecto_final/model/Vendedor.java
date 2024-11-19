@@ -11,9 +11,12 @@ public class Vendedor {
     private String contrasena;
     private LinkedList<Producto> listProducto;
     private LinkedList<Vendedor> listVendedores;
+    private LinkedList<Publicacion> listPublicaciones;
+
     public Vendedor() {
         listProducto = new LinkedList<>();
         listVendedores = new LinkedList<>();
+        listPublicaciones = new LinkedList<>();
     }
 
     public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
@@ -25,10 +28,19 @@ public class Vendedor {
         this.contrasena = contrasena;
         listProducto = new LinkedList<>();
         listVendedores = new LinkedList<>();
+        listPublicaciones = new LinkedList<>();
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public LinkedList<Publicacion> getListPublicaciones() {
+        return listPublicaciones;
+    }
+
+    public void setListPublicaciones(LinkedList<Publicacion> listPublicaciones) {
+        this.listPublicaciones = listPublicaciones;
     }
 
     public void setNombre(String nombre) {
@@ -131,5 +143,9 @@ public class Vendedor {
 
     public void eliminarAmigo(Vendedor vendedorAmigo) {
         listVendedores.remove(vendedorAmigo);
+    }
+
+    public void agregarPublicacion(Publicacion newPublicacion) {
+        listPublicaciones.add(newPublicacion);
     }
 }
