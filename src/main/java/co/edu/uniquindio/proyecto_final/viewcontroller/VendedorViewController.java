@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,7 @@ import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
+import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -28,6 +30,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.control.Label;
@@ -124,7 +127,7 @@ public class VendedorViewController implements Initializable, Observer {
 
     @FXML
     void onReportes(ActionEvent event) {
-        exportarEstadisticas("Juan me la puede chupar","Daniel");
+        exportarEstadisticas(estadiasticas(),vendedor.nombre());
     }
 
     @FXML
@@ -292,20 +295,20 @@ public class VendedorViewController implements Initializable, Observer {
         String titulo = "Reporte de Estadísticas";
         String contenidoReporte = String.format("%s\nFecha de exportación: %s\nUsuario: %s\n\n%s",
                 titulo, fecha, usuario, contenidoEstadisticas);
-        //para seleccionar la ruta del archivo
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Seleccionar carpeta para guardar el reporte");
-        fileChooser.setSelectedFile(new File("reporte_estadisticas.txt"));
-
-        int resultado = fileChooser.showSaveDialog(null);
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File archivo = fileChooser.getSelectedFile();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar carpeta para guardar el reporte");
+        fileChooser.setInitialFileName("reporte_estadisticas.txt");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos de texto", "*.txt"));
+        File archivo = fileChooser.showSaveDialog(null);
+        if (archivo != null) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
                 writer.write(contenidoReporte);
                 System.out.println("Reporte exportado exitosamente.");
             } catch (IOException e) {
                 System.out.println("Error al exportar el reporte: " + e.getMessage());
             }
+        } else {
+            System.out.println("Operación cancelada por el usuario.");
         }
     }
 
@@ -319,6 +322,17 @@ public class VendedorViewController implements Initializable, Observer {
     @FXML
     void onModificarPublicacion(ActionEvent event) {
 
+    }
+
+    public String estadiasticas(){
+        String mensaje = "";
+        int contador = 0;
+        List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.cedula());
+        for (ProductoDto productoDto : productos) {
+            contador++;
+        }
+        mensaje = "La cantidad de productos publicados por el vendedor " + vendedor.nombre() + " es " + contador + " productos.";
+        return mensaje;
     }
 
     @FXML
