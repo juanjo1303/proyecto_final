@@ -68,6 +68,9 @@ public class VendedorViewController implements Initializable, Observer {
     private Button buttonEliminarPublicacion;
 
     @FXML
+    private Button bttnGestionarPublicacion;
+
+    @FXML
     private Label labelName;
 
     @FXML
@@ -101,6 +104,8 @@ public class VendedorViewController implements Initializable, Observer {
     @FXML
     private Button buttonAgregarVendedor;
 
+
+
     @FXML
     private Tab tabMuro;
 
@@ -122,12 +127,20 @@ public class VendedorViewController implements Initializable, Observer {
     @FXML
     private GridPane gridPaneVendedores;
 
+
     @FXML
     private Text txtUserName;
 
     @FXML
     void onReportes(ActionEvent event) {
         exportarEstadisticas(estadiasticas(),vendedor.nombre());
+    }
+
+
+    @FXML
+    void onGestionarPublicacion(ActionEvent event) {
+
+
     }
 
     @FXML

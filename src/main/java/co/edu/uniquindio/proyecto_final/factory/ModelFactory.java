@@ -54,7 +54,7 @@ public class ModelFactory implements IModelFactoryServices {
                 .apellido("Pachito")
                 .cedula("0001")
                 .direccion("La casa de el")
-                .usuario("Pls_dont_commit")
+                .usuario("JuanPene")
                 .contrasena("1234")
                 .build();
 
@@ -76,6 +76,15 @@ public class ModelFactory implements IModelFactoryServices {
                 .contrasena("1234")
                 .build();
 
+        Vendedor vendedor5 = Vendedor.builder()
+                .nombre("Perlita")
+                .apellido("Juarez")
+                .cedula("0003")
+                .direccion("Una casa cualquiera")
+                .usuario("PerlitaLinda")
+                .contrasena("1234")
+                .build();
+
         Producto producto4 = Producto.builder()
                 .nombre("Mi casita")
                 .categoria("Hogar")
@@ -90,6 +99,14 @@ public class ModelFactory implements IModelFactoryServices {
                 .estado(Estado.PUBLICADO)
                 .precio("1")
                 .imagen("/co/edu/uniquindio/images/computadorJhan.jpg")
+                .build();
+
+        Producto producto6 = Producto.builder()
+                .nombre("Mi carrito")
+                .categoria("Vehículo")
+                .estado(Estado.PUBLICADO)
+                .precio("1")
+                .imagen("/co/edu/uniquindio/images/carroJhan.jpg")
                 .build();
 
         Producto producto1 = Producto.builder()
@@ -116,26 +133,48 @@ public class ModelFactory implements IModelFactoryServices {
                 .estado(Estado.PUBLICADO)
                 .build();
 
+        Producto producto7 = Producto.builder()
+                .nombre("Celular")
+                .categoria("Tecnologia")
+                .precio("666")
+                .estado(Estado.PUBLICADO)
+                .imagen("/co/edu/uniquindio/images/ceñuco.jpg")
+                .build();
+
+        Publicacion publicacion = Publicacion.builder()
+                .vendedor(vendedor4)
+                .producto(producto4)
+                .descripcion("Vendo mi casita pa poder comer")
+                .build();
+
         vendedor0.agregarProducto(producto1);
         vendedor0.agregarProducto(producto2);
         vendedor0.agregarProducto(producto3);
         vendedor4.agregarProducto(producto4);
         vendedor4.agregarProducto(producto5);
+        vendedor4.agregarProducto(producto6);
+        vendedor5.agregarProducto(producto7);
 
         vendedor0.agregarAmigo(vendedor1);
         vendedor0.agregarAmigo(vendedor2);
+        vendedor0.agregarAmigo(vendedor5);
 
         marketPlace.getProductos().add(producto1);
         marketPlace.getProductos().add(producto2);
         marketPlace.getProductos().add(producto3);
         marketPlace.getProductos().add(producto4);
         marketPlace.getProductos().add(producto5);
+        marketPlace.getProductos().add(producto6);
+        marketPlace.getProductos().add(producto7);
 
         marketPlace.getVendedores().add(vendedor0);
         marketPlace.getVendedores().add(vendedor1);
         marketPlace.getVendedores().add(vendedor2);
         marketPlace.getVendedores().add(vendedor3);
         marketPlace.getVendedores().add(vendedor4);
+        marketPlace.getVendedores().add(vendedor5);
+
+        marketPlace.agregarPublicación(publicacion);
 
         return marketPlace;
     }

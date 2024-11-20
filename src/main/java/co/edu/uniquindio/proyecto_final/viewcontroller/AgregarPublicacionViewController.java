@@ -25,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class AgregarPublicacionViewController implements Observable {
     private AgregarPublicacionController agregarPublicacionController;
@@ -42,6 +43,12 @@ public class AgregarPublicacionViewController implements Observable {
 
     @FXML
     private Button bttnAgregar;
+
+    @FXML
+    private Button bttnEliminar;
+
+    @FXML
+    private Button bttnModificar;
 
     @FXML
     private TextField categoriaTxt;
@@ -83,15 +90,41 @@ public class AgregarPublicacionViewController implements Observable {
     private TableColumn<ProductoDto, String> tcPrecio;
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onEliminar(ActionEvent event) {
 
+    }
+
+    @FXML
+    void onModificar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onCerrar(ActionEvent event) {
+        Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
+        currentStage.close();
     }
 
     @FXML
     void onAgregar(ActionEvent event) throws IOException {
         if(verificacionFinal()){
             this.notifyObservers();
+            limpiarSeleccion();
         }
+    }
+
+    private void limpiarSeleccion() {
+        tableProducto.getSelectionModel().clearSelection();
+        limpiarCamposProducto();
+    }
+
+    private void limpiarCamposProducto() {
+        nombreTxt.clear();
+        categoriaTxt.clear();
+        precioTxt.clear();
+        estadoTxt.clear();
+        descripcionTxt.clear();
+        imageProducto.setImage(new Image(getClass().getResource("/co/edu/uniquindio/images/lupa.png").toExternalForm()));
     }
 
     private boolean verificacionFinal() {
@@ -163,6 +196,7 @@ public class AgregarPublicacionViewController implements Observable {
         obtenerProductos();
         tableProducto.getItems().clear();
         tableProducto.setItems(productos);
+
     }
 
     private void obtenerProductos() {

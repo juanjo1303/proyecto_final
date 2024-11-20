@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
    <children>
       <Pane prefHeight="680.0" prefWidth="45.0" style="-fx-background-color: black;">
          <children>
@@ -63,7 +63,7 @@
             <Button fx:id="buttonMuro" layoutX="25.0" layoutY="345.0" mnemonicParsing="false" onAction="#onMuro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
             <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
-            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe " textFill="WHITE" />
+            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
             <Label fx:id="labelName" alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="99.0" prefWidth="221.0" text="Nombre del pato" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="25.0" />
@@ -122,9 +122,6 @@
                               <Image url="@../images/muro.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="buttonAgregarPublicacion" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicación" AnchorPane.rightAnchor="385.0" AnchorPane.topAnchor="5.0" />
-                        <Button fx:id="buttonModificarPublicacion" layoutX="366.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="5.0" />
-                        <Button fx:id="buttonEliminarPublicacion" layoutX="479.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarPublicacion" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" />
                         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="44.0">
                            <content>
                               <GridPane fx:id="gridPanePublicaciones" prefHeight="635.0" prefWidth="735.0">
@@ -134,6 +131,7 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
+                        <Button fx:id="buttonAgregarPublicacion" layoutX="172.0" layoutY="6.0" mnemonicParsing="false" onAction="#onAgregarPublicacion" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Publicacion" AnchorPane.leftAnchor="221.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -153,7 +151,7 @@
                               <Image url="@../images/products.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="buttonAgregarProducto" layoutX="221.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarProducto" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Producto" AnchorPane.rightAnchor="385.0" />
+                        <Button fx:id="buttonAgregarProducto" layoutX="221.0" layoutY="5.0" mnemonicParsing="false" onAction="#onAgregarProducto" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #FFFFFF;" text="Agregar Producto" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="385.0" AnchorPane.topAnchor="5.0" />
                         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="-2.0" layoutY="44.0">
                            <content>
                                <GridPane fx:id="gridPaneProductos" layoutX="123.0" layoutY="1.0" prefHeight="635.0" prefWidth="735.0">
@@ -170,7 +168,7 @@
                            </content>
                         </ScrollPane>
                         <Button fx:id="buttonEliminarProducto" layoutX="494.0" layoutY="5.0" mnemonicParsing="false" onAction="#onEliminarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Eliminar" AnchorPane.rightAnchor="125.0" />
-                        <Button fx:id="buttonModificarProducto" layoutX="379.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="255.0" />
+                        <Button fx:id="buttonModificarProducto" layoutX="379.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModificarProducto" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #FFFFFF;" text="Modificar" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>
               </content>
