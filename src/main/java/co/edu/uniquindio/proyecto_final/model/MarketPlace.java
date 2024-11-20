@@ -2,22 +2,26 @@ package co.edu.uniquindio.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
+import co.edu.uniquindio.proyecto_final.service.IAutenticacion;
 import co.edu.uniquindio.proyecto_final.service.ICrudProducto;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class MarketPlace implements ICrudProducto {
+public class MarketPlace implements ICrudProducto, IAutenticacion {
     private String nombre;
     private LinkedList<Producto> productos = new LinkedList<>();
     private LinkedList<Vendedor> vendedores = new LinkedList<>();
     private LinkedList<Publicacion> publicaciones = new LinkedList<>();
+
+    private AutenticacionReal autenticacionReal = new AutenticacionReal(getVendedores());
 
     public MarketPlace() {}
 
     public MarketPlace(String nombre) {
         this.nombre = nombre;
     }
+
 
     public Vendedor getVendedor(String cedula) {
         for (Vendedor v : vendedores) {
@@ -101,6 +105,7 @@ public class MarketPlace implements ICrudProducto {
     }
 
     public boolean verificarCredenciales(UsuarioDto usuarioDto) {
+        iniciarSesion(usuarioDto);
         for(Vendedor vendedor : vendedores){
             if(vendedor.getUsuario().equals(usuarioDto.user()) && vendedor.getContrasena().equals(usuarioDto.pass())){
                 return true;
@@ -234,6 +239,19 @@ public class MarketPlace implements ICrudProducto {
                 vendedor.agregarPublicacion(newPublicacion);
             }
         }
+    }
+
+    @Override
+    public boolean iniciarSesion(UsuarioDto usuarioDto) {
+        String user = usuarioDto.user();
+        System.out.println("Verificando acceso para: " + user);
+        boolean accesoPermitido = autenticacionReal.iniciarSesion(usuarioDto);
+        if (accesoPermitido) {
+            System.out.println("Acceso permitido al vendedor: " + user);
+        } else {
+            System.out.println("Acceso denegado: El usuario no está registrado como vendedor.");
+        }
+        return accesoPermitido;
     }
 }
 
