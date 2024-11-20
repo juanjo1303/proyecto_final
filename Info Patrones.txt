@@ -1,0 +1,60 @@
+Creacionales
+
+- Singleton
+
+	*Problema: 
+Necesitábamos garantizar que solo exista una instancia de un objeto en toda la aplicación. En este caso, el proyecto completo.
+
+	*Propósito: 
+Controlar el acceso a un recurso compartido y evitar la creación de múltiples instancias que podrían generar inconsistencias o problemas de concurrencia.
+
+	*Solución: 
+El patrón Singleton asegura que una clase tenga una única instancia y proporciona un punto de acceso global a esa instancia.
+
+- Builder
+
+	*Problema: 
+Crear objetos complejos con muchos atributos, donde el orden de construcción o la configuración inicial pueden variar.
+
+	*Propósito: 
+Separar la construcción de un objeto de su representación, permitiendo crear objetos complejos de forma flexible y fácil de entender.
+
+	*Solución: 
+El patrón Builder permite construir objetos paso a paso, a través de un objeto constructor independiente. Esto facilita la creación de objetos con diferentes configuraciones sin exponer la complejidad interna de la clase.
+
+Estructurales
+
+- Proxy
+
+	*Problema: 
+Controlar el acceso a un objeto o servicio, por ejemplo, verificar si un usuario está autenticado antes de permitirle iniciar sesión.
+
+	*Propósito: 
+Proporcionar un sustituto o intermediario para un objeto real, controlando el acceso a él y agregando funcionalidades adicionales.
+
+	*Solución: 
+El patrón Proxy crea un objeto intermediario que controla el acceso al objeto real. En este caso, el proxy podría verificar las credenciales del usuario antes de delegar la solicitud al objeto real, como un servicio de autenticación.
+
+Comportamentales
+
+- Observer
+
+	*Problema: 
+Notificar a múltiples objetos cuando ocurre un cambio en un objeto específico. En este caso, actualizar la interfaz gráfica cuando se agrega un producto.
+
+	*Propósito: 
+Definir una dependencia uno a muchos entre objetos, de modo que cuando un objeto cambia de estado, todos sus dependientes sean notificados y actualizados automáticamente.
+
+	*Solución: 
+El patrón Observer permite que un objeto (el sujeto) mantenga una lista de otros objetos (observadores) que están interesados en su estado. Cuando el estado del sujeto cambia, notifica a todos los observadores, los cuales pueden realizar las acciones necesarias, como actualizar una interfaz gráfica.
+
+- Mediator
+
+	*Problema:
+En un sistema donde varios objetos interactúan directamente entre sí, los cambios en una parte del sistema pueden tener efectos secundarios no deseados en otras partes, lo que dificulta la comprensión, mantenimiento y extensión del código.
+
+	*Propósito: 
+El propósito del patrón Mediator es desacoplar estos objetos, es decir, reducir la dependencia directa entre ellos.
+
+	*Solución: 
+Al crear un flujo de la información que actúa como un intermediario entre los demás objetos. Este conoce a todos los objetos y es responsable de coordinar su interacción.

@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_final.viewcontroller.VendedorViewController">
    <children>
       <Pane prefHeight="680.0" prefWidth="45.0" style="-fx-background-color: black;">
          <children>
@@ -63,7 +63,7 @@
             <Button fx:id="buttonMuro" layoutX="25.0" layoutY="345.0" mnemonicParsing="false" onAction="#onMuro" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Muro" textFill="WHITE" />
             <Button fx:id="buttonMisProductos" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#onProductos" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Mis Productos" textFill="WHITE" />
             <Button fx:id="buttonLogOut" layoutX="25.0" layoutY="525.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Cerrar Sesión" textFill="WHITE" />
-            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe (Prueba) " textFill="WHITE" />
+            <Button fx:id="buttonReportes" layoutX="25.0" layoutY="165.0" mnemonicParsing="false" onAction="#onReportes" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #000000;" text="Generar informe" textFill="WHITE" />
             <Label fx:id="labelName" alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="99.0" prefWidth="221.0" text="Nombre del pato" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="25.0" />
