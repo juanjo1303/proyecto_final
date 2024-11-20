@@ -128,6 +128,8 @@ public class MarketPlace implements ICrudProducto {
                 break;
             }
         }
+        System.out.println(productos);
+
         return true;
     }
 

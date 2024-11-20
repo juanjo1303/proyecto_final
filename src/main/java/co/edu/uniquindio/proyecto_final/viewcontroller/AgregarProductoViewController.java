@@ -166,7 +166,7 @@ public class AgregarProductoViewController implements Observable {
         Estado estado = cbEstado.getValue();
         String image = imageUrl;
 
-        if(nombre == null || categoria == null || precio == null || estado == null || image == null ){
+        if(nombre == "" || categoria == "" || precio == "" || estado == null || image == "/co/edu/uniquindio/images/"){
             return false;
         }
         return true;

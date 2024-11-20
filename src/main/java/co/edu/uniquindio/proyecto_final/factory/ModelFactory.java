@@ -6,6 +6,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.proyecto_final.model.*;
+import co.edu.uniquindio.proyecto_final.model.builder.VendedorBuilder;
 import co.edu.uniquindio.proyecto_final.service.IModelFactoryServices;
 
 import java.util.ArrayList;
@@ -66,6 +67,31 @@ public class ModelFactory implements IModelFactoryServices {
                 .contrasena("1234")
                 .build();
 
+        Vendedor vendedor4 = Vendedor.builder()
+                .nombre("Jhan Carlos")
+                .apellido("Martinez")
+                .usuario("AbuelitasDestroyer")
+                .cedula("123456789")
+                .direccion("La casa de su madre")
+                .contrasena("1234")
+                .build();
+
+        Producto producto4 = Producto.builder()
+                .nombre("Mi casita")
+                .categoria("Hogar")
+                .estado(Estado.PUBLICADO)
+                .precio("1")
+                .imagen("/co/edu/uniquindio/images/casitaJhan.jpg")
+                .build();
+
+        Producto producto5 = Producto.builder()
+                .nombre("Mi pc")
+                .categoria("Tecnología")
+                .estado(Estado.PUBLICADO)
+                .precio("1")
+                .imagen("/co/edu/uniquindio/images/computadorJhan.jpg")
+                .build();
+
         Producto producto1 = Producto.builder()
                 .nombre("Carro")
                 .imagen("/co/edu/uniquindio/images/carro.jpg")
@@ -90,19 +116,26 @@ public class ModelFactory implements IModelFactoryServices {
                 .estado(Estado.PUBLICADO)
                 .build();
 
-        vendedor0.getListProducto().add(producto1);
-        vendedor0.getListProducto().add(producto2);
-        vendedor0.getListProducto().add(producto3);
+        vendedor0.agregarProducto(producto1);
+        vendedor0.agregarProducto(producto2);
+        vendedor0.agregarProducto(producto3);
+        vendedor4.agregarProducto(producto4);
+        vendedor4.agregarProducto(producto5);
+
         vendedor0.agregarAmigo(vendedor1);
         vendedor0.agregarAmigo(vendedor2);
+
         marketPlace.getProductos().add(producto1);
         marketPlace.getProductos().add(producto2);
         marketPlace.getProductos().add(producto3);
+        marketPlace.getProductos().add(producto4);
+        marketPlace.getProductos().add(producto5);
 
         marketPlace.getVendedores().add(vendedor0);
         marketPlace.getVendedores().add(vendedor1);
         marketPlace.getVendedores().add(vendedor2);
         marketPlace.getVendedores().add(vendedor3);
+        marketPlace.getVendedores().add(vendedor4);
 
         return marketPlace;
     }
