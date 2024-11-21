@@ -1,25 +1,21 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashSet;
-import java.util.ResourceBundle;
+import java.util.Objects;
 import java.util.Set;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarPublicacionController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
-import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.service.Observable;
 import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,23 +28,10 @@ public class AgregarPublicacionViewController implements Observable {
     private ProductoDto selectedProduct;
     ObservableList<ProductoDto> productos = FXCollections.observableArrayList();
     private Set<Observer> observerSet;
-
     private VendedorDto vendedorDto;
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Button bttnAgregar;
-
-    @FXML
-    private Button bttnEliminar;
-
-    @FXML
-    private Button bttnModificar;
 
     @FXML
     private TextField categoriaTxt;
@@ -90,23 +73,13 @@ public class AgregarPublicacionViewController implements Observable {
     private TableColumn<ProductoDto, String> tcPrecio;
 
     @FXML
-    void onEliminar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onModificar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
         currentStage.close();
     }
 
     @FXML
-    void onAgregar(ActionEvent event) throws IOException {
+    void onAgregar() throws IOException {
         if(verificacionFinal()){
             this.notifyObservers();
             limpiarSeleccion();
@@ -124,7 +97,7 @@ public class AgregarPublicacionViewController implements Observable {
         precioTxt.clear();
         estadoTxt.clear();
         descripcionTxt.clear();
-        imageProducto.setImage(new Image(getClass().getResource("/co/edu/uniquindio/images/lupa.png").toExternalForm()));
+        imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource("/co/edu/uniquindio/images/lupa.png")).toExternalForm()));
     }
 
     private boolean verificacionFinal() {
@@ -178,13 +151,13 @@ public class AgregarPublicacionViewController implements Observable {
     }
 
     private void listenerSelection() {
-        tableProducto.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectedProduct = newValue;
+        tableProducto.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {selectedProduct = newValue;
             mostrarInformacionProducto(selectedProduct);});
     }
 
     private void mostrarInformacionProducto(ProductoDto selectedProduct) {
         if(selectedProduct != null) {
-            imageProducto.setImage(new Image(getClass().getResource(selectedProduct.imagen()).toExternalForm()));
+            imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedProduct.imagen())).toExternalForm()));
             nombreTxt.setText(selectedProduct.nombre());
             categoriaTxt.setText(selectedProduct.categoria());
             precioTxt.setText(selectedProduct.precio());

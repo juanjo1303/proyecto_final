@@ -1,9 +1,5 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
 import co.edu.uniquindio.proyecto_final.controller.RegistroController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import javafx.event.ActionEvent;
@@ -14,21 +10,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.util.Objects;
+
 public class RegistroViewController {
     private RegistroController registroController;
     private VendedorDto vendedor;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private ImageView escudoImageView;
@@ -61,35 +52,35 @@ public class RegistroViewController {
     private Button cerrarButton;
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar(ActionEvent event) throws Exception {
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
     }
 
     @FXML
-    void onRegistro(ActionEvent event) {
+    void onRegistro(ActionEvent event) throws Exception {
         validacionFinal(event);
     }
 
     @FXML
-    private void loadStage(String url, Event event) {
+    private void loadStage(String url, Event event) throws Exception{
         try {
             Window window = ((javafx.scene.Node) (event.getSource())).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(url)));
             Scene scene = new Scene(root);
             Stage newStage = (Stage) window;
             newStage.setScene(scene);
             newStage.show();
 
         } catch (Exception e) {
-            new Exception("Error al cambiar de escena");
+            throw new Exception("Error al cambiar de escena");
         }
     }
 
-    private void validacionFinal(Event event) {
-        if (camposVacios() == false){
-            if(contrasenaIguales() == true){
-                if(verificarVendedorExistente() == true) {
-                    if(verificarCedulaRegistrada() == true){
+    private void validacionFinal(Event event) throws Exception {
+        if (!camposVacios()){
+            if(contrasenaIguales()){
+                if(verificarVendedorExistente()) {
+                    if(verificarCedulaRegistrada()){
                         confirmacion(event);
                         vendedor = buildDtoVendedor();
                         registroController.crearVendedor(vendedor);
@@ -152,30 +143,19 @@ public class RegistroViewController {
         String contrasena = setContrasenaField.getText();
         String confirmacionContrasena = confirmarContrasenaField.getText();
 
-        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() ||
+        return nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() ||
                 direccion.isEmpty() || usuario.isEmpty() || contrasena.isEmpty() ||
-                confirmacionContrasena.isEmpty()) {
-            return true;
-
-        }
-        else {
-            return false;
-        }
+                confirmacionContrasena.isEmpty();
     }
 
     private boolean contrasenaIguales(){
         String contrasena = setContrasenaField.getText();
         String confirmacionContrasena = confirmarContrasenaField.getText();
 
-        if(contrasena.equals(confirmacionContrasena)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return contrasena.equals(confirmacionContrasena);
     }
 
-    private void confirmacion(Event event){
+    private void confirmacion(Event event) throws Exception {
         mostrarAlertaUsuario();
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
     }

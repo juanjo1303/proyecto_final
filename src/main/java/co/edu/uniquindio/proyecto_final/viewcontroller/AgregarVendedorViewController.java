@@ -1,10 +1,7 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarVendedorController;
@@ -14,7 +11,6 @@ import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -29,12 +25,6 @@ public class AgregarVendedorViewController implements Observable {
     private Set<Observer> observerSet;
     private VendedorDto selectedVendedor;
     private VendedorDto vendedorDto;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button bttnEliminar;
@@ -61,7 +51,7 @@ public class AgregarVendedorViewController implements Observable {
     private TableColumn<VendedorDto, String> tcNombre;
 
     @FXML
-    void onEliminar(ActionEvent event) throws IOException {
+    void onEliminar() throws IOException {
         if(verificacionFinalEliminar()){
             this.notifyObservers();
         }
@@ -89,7 +79,7 @@ public class AgregarVendedorViewController implements Observable {
     }
 
     @FXML
-    void onAgregar(ActionEvent event) throws IOException {
+    void onAgregar() throws IOException {
         if(verificacionFinal()){
             this.notifyObservers();
         }
@@ -121,7 +111,7 @@ public class AgregarVendedorViewController implements Observable {
     }
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
         currentStage.close();
     }
@@ -159,7 +149,7 @@ public class AgregarVendedorViewController implements Observable {
 
 
     private void listenerSelection() {
-        tableVendedor.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectedVendedor = newValue;});
+        tableVendedor.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> selectedVendedor = newValue);
     }
 
     private void initDataBinding(){

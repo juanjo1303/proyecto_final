@@ -1,8 +1,5 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import co.edu.uniquindio.proyecto_final.controller.ProductoCompraController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
@@ -10,24 +7,19 @@ import co.edu.uniquindio.proyecto_final.model.Estado;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class ProductoCompraViewController {
     private ProductoCompraController productoCompraController;
     private VendedorDto vendedorDto;
     private ProductoDto selectedProduct;
     ObservableList<ProductoDto> productos = FXCollections.observableArrayList();
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button bttnComprar;
@@ -60,13 +52,13 @@ public class ProductoCompraViewController {
     private TableColumn<ProductoDto, String> tcPrecio;
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
         currentStage.close();
     }
 
     @FXML
-    void onComprar(ActionEvent event) {
+    void onComprar() {
         if(verificacionFinal()){
             actualizarTabla();
         }
@@ -165,15 +157,15 @@ public class ProductoCompraViewController {
     }
 
     private void listenerSelection() {
-        tableProducto.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectedProduct = newValue;
+        tableProducto.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {selectedProduct = newValue;
             mostrarInformacionProducto(selectedProduct);});
     }
 
     private void mostrarInformacionProducto(ProductoDto selectedProduct) {
         if(selectedProduct != null) {
-            imageProducto.setImage(new Image(getClass().getResource(selectedProduct.imagen()).toExternalForm()));
+            imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedProduct.imagen())).toExternalForm()));
         }else {
-            imageProducto.setImage(new Image(getClass().getResource("/co/edu/uniquindio/images/lupa.jpg").toExternalForm()));
+            imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource("/co/edu/uniquindio/images/lupa.jpg")).toExternalForm()));
         }
     }
 }

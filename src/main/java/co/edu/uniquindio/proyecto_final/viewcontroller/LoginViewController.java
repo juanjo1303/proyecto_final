@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto_final.viewcontroller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto_final.controller.LoginController;
@@ -23,7 +24,6 @@ import javafx.stage.Window;
 
 public class LoginViewController implements Initializable{
     private LoginController loginController;
-    private UsuarioDto usuarioDto;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,12 +36,6 @@ public class LoginViewController implements Initializable{
         loginController = new LoginController();
     }
     VendedorController vendedorController;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button entrarLoginButton;
@@ -62,7 +56,7 @@ public class LoginViewController implements Initializable{
     private TextField contrasenaTxt;
 
     @FXML
-    private void onIniciarSesion(ActionEvent event) throws IOException {
+    private void onIniciarSesion() throws IOException {
         String usuario = usuarioTxt.getText();
         String contrasena = contrasenaTxt.getText();
         UsuarioDto usuarioDto1 = new UsuarioDto(usuario,contrasena);
@@ -91,22 +85,22 @@ public class LoginViewController implements Initializable{
     }
 
     @FXML
-    void onResgistrarse(ActionEvent event) {
+    void onResgistrarse(ActionEvent event) throws Exception {
         loadStage("/co/edu/uniquindio/proyecto_final/registro.fxml", event);
     }
 
     @FXML
-    private void loadStage(String url, Event event) {
+    private void loadStage(String url, Event event) throws Exception {
         try {
             Window window = ((javafx.scene.Node) (event.getSource())).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(url)));
             Scene scene = new Scene(root);
             Stage newStage = (Stage) window;
             newStage.setScene(scene);
             newStage.show();
 
         } catch (Exception e) {
-            new Exception("Error al cambiar de escena");
+            throw new Exception("Error al cambiar de escena");
         }
     }
 

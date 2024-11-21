@@ -1,9 +1,8 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashSet;
-import java.util.ResourceBundle;
+import java.util.Objects;
 import java.util.Set;
 
 import co.edu.uniquindio.proyecto_final.controller.EliminarProductoController;
@@ -14,7 +13,6 @@ import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -29,12 +27,6 @@ public class EliminarProductoViewController implements Observable {
     private ProductoDto selectedProduct;
     ObservableList<ProductoDto> productos = FXCollections.observableArrayList();
     private Set<Observer> observerSet;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button bttnEliminar;
@@ -64,17 +56,17 @@ public class EliminarProductoViewController implements Observable {
     private TableColumn<ProductoDto, String> tcPrecio;
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
         currentStage.close();
     }
 
     @FXML
-    void onEliminar(ActionEvent event) throws IOException {
-        validacionFinal(event);
+    void onEliminar() throws IOException {
+        validacionFinal();
     }
 
-    private void validacionFinal(ActionEvent event) throws IOException {
+    private void validacionFinal() throws IOException {
         if(selectedProduct != null){
             eliminarProductoController.eliminarProducto(selectedProduct,vendedorDto);
             productos.remove(selectedProduct);
@@ -103,12 +95,12 @@ public class EliminarProductoViewController implements Observable {
 
 
     private void listenerSelection() {
-        tableProducto.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectedProduct = newValue;
+        tableProducto.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {selectedProduct = newValue;
             mostrarInformacionProducto(selectedProduct);});
     }
 
     private void mostrarInformacionProducto(ProductoDto selectedProduct) {
-        imageProducto.setImage(new Image(getClass().getResource(selectedProduct.imagen()).toExternalForm()));
+        imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedProduct.imagen())).toExternalForm()));
     }
 
     private void initView() {

@@ -3,7 +3,6 @@ package co.edu.uniquindio.proyecto_final.controller;
 import co.edu.uniquindio.proyecto_final.factory.ModelFactory;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
-import co.edu.uniquindio.proyecto_final.service.IAgregarProductoController;
 import co.edu.uniquindio.proyecto_final.service.IProductoCompraController;
 
 import java.util.List;

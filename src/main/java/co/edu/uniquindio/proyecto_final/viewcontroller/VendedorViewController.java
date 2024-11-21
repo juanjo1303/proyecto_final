@@ -7,15 +7,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.proyecto_final.controller.VendedorController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
-import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -29,13 +28,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.control.Label;
-
-import javax.swing.*;
+import lombok.Getter;
+import lombok.Setter;
 
 public class VendedorViewController implements Initializable, Observer {
     @Override
@@ -43,14 +41,10 @@ public class VendedorViewController implements Initializable, Observer {
         vendedorController = new VendedorController();
     }
 
+    @Setter
+    @Getter
     private VendedorDto vendedor;
     VendedorController vendedorController;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private AnchorPane anchorPaneMuro;
@@ -62,15 +56,6 @@ public class VendedorViewController implements Initializable, Observer {
     private AnchorPane anchorPaneVendedores;
 
     @FXML
-    private Button buttonEliminarProducto;
-
-    @FXML
-    private Button buttonEliminarPublicacion;
-
-    @FXML
-    private Button bttnGestionarPublicacion;
-
-    @FXML
     private Label labelName;
 
     @FXML
@@ -80,13 +65,6 @@ public class VendedorViewController implements Initializable, Observer {
     private Button buttonMisProductos;
 
     @FXML
-    private Button buttonModificarProducto;
-
-    @FXML
-    private Button buttonModificarPublicacion;
-
-
-    @FXML
     private Button buttonMuro;
 
     @FXML
@@ -94,17 +72,6 @@ public class VendedorViewController implements Initializable, Observer {
 
     @FXML
     private Button buttonReportes;
-
-    @FXML
-    private Button buttonAgregarProducto;
-
-    @FXML
-    private Button buttonAgregarPublicacion;
-
-    @FXML
-    private Button buttonAgregarVendedor;
-
-
 
     @FXML
     private Tab tabMuro;
@@ -127,24 +94,13 @@ public class VendedorViewController implements Initializable, Observer {
     @FXML
     private GridPane gridPaneVendedores;
 
-
     @FXML
-    private Text txtUserName;
-
-    @FXML
-    void onReportes(ActionEvent event) {
-        exportarEstadisticas(estadiasticas(),vendedor.nombre());
-    }
-
-
-    @FXML
-    void onGestionarPublicacion(ActionEvent event) {
-
-
+    void onReportes() {
+        exportarEstadisticas(estadiasticas(), vendedor.nombre());
     }
 
     @FXML
-    void onVendedores(ActionEvent event) throws IOException {
+    void onVendedores() throws IOException {
         tabPane.getSelectionModel().select(tabVendedores);
         mostrarVendedores();
     }
@@ -169,28 +125,28 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onMuro(ActionEvent event) throws IOException {
+    void onMuro() throws IOException {
         tabPane.getSelectionModel().select(tabMuro);
         mostrarPublicaciones();
     }
 
     @FXML
-    void onProductos(ActionEvent event) throws IOException {
+    void onProductos() throws IOException {
         tabPane.getSelectionModel().select(tabProductos);
         mostrarProductos();
     }
 
     @Override
-    public void update() throws IOException{
+    public void update() throws IOException {
         mostrarProductos();
         mostrarVendedores();
         mostrarPublicaciones();
     }
 
     @FXML
-    void onAgregarProducto(ActionEvent event) throws IOException {
+    void onAgregarProducto() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-producto.fxml"));
-        Scene scene = new Scene(loader.load(), 520,651);
+        Scene scene = new Scene(loader.load(), 520, 651);
         AgregarProductoViewController controller = loader.getController();
         controller.setVendedor(vendedor);
         controller.addObserver(this);
@@ -200,9 +156,9 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onEliminarProducto(ActionEvent event) throws IOException {
+    void onEliminarProducto() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/eliminar-producto.fxml"));
-        Scene scene = new Scene(loader.load(), 520,651);
+        Scene scene = new Scene(loader.load(), 520, 651);
         EliminarProductoViewController controller = loader.getController();
         controller.setVendedor(vendedor);
         controller.addObserver(this);
@@ -212,9 +168,9 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onModificarProducto(ActionEvent event) throws IOException {
+    void onModificarProducto() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/modificar-producto.fxml"));
-        Scene scene = new Scene(loader.load(), 520,651);
+        Scene scene = new Scene(loader.load(), 520, 651);
         ModificarProductoViewController controller = loader.getController();
         controller.setVendedor(vendedor);
         controller.addObserver(this);
@@ -224,9 +180,9 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onAgregarPublicacion(ActionEvent event) throws IOException {
+    void onAgregarPublicacion() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-publicacion.fxml"));
-        Scene scene = new Scene(loader.load(), 520,651);
+        Scene scene = new Scene(loader.load(), 520, 651);
         AgregarPublicacionViewController controller = loader.getController();
         controller.setVendedor(vendedor);
         controller.addObserver(this);
@@ -236,11 +192,10 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
 
-
     @FXML
-    void onAgregarVendedor(ActionEvent event) throws IOException {
+    void onAgregarVendedor() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/proyecto_final/agregar-vendedor.fxml"));
-        Scene scene = new Scene(loader.load(), 520,651);
+        Scene scene = new Scene(loader.load(), 520, 651);
         AgregarVendedorViewController controller = loader.getController();
         controller.setVendedor(vendedor);
         controller.addObserver(this);
@@ -284,30 +239,29 @@ public class VendedorViewController implements Initializable, Observer {
     }
 
     @FXML
-    void onCerrarSesion(ActionEvent event) {
+    void onCerrarSesion(ActionEvent event) throws Exception {
         loadStage("/co/edu/uniquindio/proyecto_final/login.fxml", event);
     }
 
     @FXML
-    private void loadStage(String url, Event event) {
+    private void loadStage(String url, Event event) throws Exception {
         try {
             Window window = ((javafx.scene.Node) (event.getSource())).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(url)));
             Scene scene = new Scene(root);
             Stage newStage = (Stage) window;
             newStage.setScene(scene);
             newStage.show();
 
         } catch (Exception e) {
-            new Exception("Error al cambiar de escena");
+            throw new Exception("Error al cambiar de escena");
         }
     }
 
     public static void exportarEstadisticas(String contenidoEstadisticas, String usuario) {
         String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String titulo = "Reporte de Estadísticas";
-        String contenidoReporte = String.format("%s\nFecha de exportación: %s\nUsuario: %s\n\n%s",
-                titulo, fecha, usuario, contenidoEstadisticas);
+        String contenidoReporte = String.format("%s\nFecha de exportación: %s\nUsuario: %s\n\n%s", titulo, fecha, usuario, contenidoEstadisticas);
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar carpeta para guardar el reporte");
         fileChooser.setInitialFileName("reporte_estadisticas.txt");
@@ -325,23 +279,11 @@ public class VendedorViewController implements Initializable, Observer {
         }
     }
 
-
-
-    @FXML
-    void onEliminarPublicacion(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onModificarPublicacion(ActionEvent event) {
-
-    }
-
-    public String estadiasticas(){
-        String mensaje = "";
+    public String estadiasticas() {
+        String mensaje;
         int contador = 0;
         List<ProductoDto> productos = vendedorController.getListaProductosDto(vendedor.cedula());
-        for (ProductoDto productoDto : productos) {
+        for (ProductoDto _ : productos) {
             contador++;
         }
         mensaje = "La cantidad de productos publicados por el vendedor " + vendedor.nombre() + " es " + contador + " productos.";
@@ -364,14 +306,6 @@ public class VendedorViewController implements Initializable, Observer {
         assert tabProductos != null : "fx:id=\"tabProductos\" was not injected: check your FXML file 'vendedorView.fxml'.";
         assert tabVendedores != null : "fx:id=\"tabVendedores\" was not injected: check your FXML file 'vendedorView.fxml'.";
 
-    }
-
-    public VendedorDto getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(VendedorDto vendedor) {
-        this.vendedor = vendedor;
     }
 
 

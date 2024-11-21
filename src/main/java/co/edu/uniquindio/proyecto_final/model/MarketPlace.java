@@ -2,26 +2,25 @@ package co.edu.uniquindio.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
-import co.edu.uniquindio.proyecto_final.service.IAutenticacion;
 import co.edu.uniquindio.proyecto_final.service.ICrudProducto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.LinkedList;
-import java.util.List;
 
-public class MarketPlace implements ICrudProducto, IAutenticacion {
+@Setter
+@Getter
+public class MarketPlace implements ICrudProducto {
     private String nombre;
     private LinkedList<Producto> productos = new LinkedList<>();
     private LinkedList<Vendedor> vendedores = new LinkedList<>();
     private LinkedList<Publicacion> publicaciones = new LinkedList<>();
-
-    private AutenticacionReal autenticacionReal = new AutenticacionReal(getVendedores());
 
     public MarketPlace() {}
 
     public MarketPlace(String nombre) {
         this.nombre = nombre;
     }
-
 
     public Vendedor getVendedor(String cedula) {
         for (Vendedor v : vendedores) {
@@ -36,40 +35,11 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
                 return v.getListProducto();
             }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public LinkedList<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(LinkedList<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public LinkedList<Vendedor> getVendedores(){ return vendedores; }
-
     public LinkedList<Vendedor> getVendedores(String id) {
         Vendedor v = getVendedor(id);
         return v.getListVendedores();
     }
 
-    public void setVendedores(LinkedList<Vendedor> vendedores) {
-        this.vendedores = vendedores;
-    }
-
-    public LinkedList<Publicacion> getPublicaciones() {
-        return publicaciones;
-    }
-
-    public void setPublicaciones(LinkedList<Publicacion> publicaciones) {
-        this.publicaciones = publicaciones;
-    }
     public boolean verificarUserVendedor(String usuario) {
         Vendedor vendedor = null;
         for(Vendedor vendedor1 : vendedores){
@@ -79,11 +49,8 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
             }
         }
 
-            if(vendedor == null){
-                return true;
-            }
-            return false;
-        }
+        return vendedor == null;
+    }
 
     public boolean verificarCedulaVendedor(String cedula) {
         Vendedor vendedor = null;
@@ -93,10 +60,7 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
                 break;
             }
         }
-        if(vendedor == null){
-            return true;
-        }
-        return false;
+        return vendedor == null;
     }
 
     public boolean crearVendedor(Vendedor newVendedor) {
@@ -105,7 +69,6 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
     }
 
     public boolean verificarCredenciales(UsuarioDto usuarioDto) {
-        iniciarSesion(usuarioDto);
         for(Vendedor vendedor : vendedores){
             if(vendedor.getUsuario().equals(usuarioDto.user()) && vendedor.getContrasena().equals(usuarioDto.pass())){
                 return true;
@@ -190,8 +153,9 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
     public boolean verificarNombreExistente(String nombre) {
         boolean existe = false;
         for(Producto producto : productos){
-            if(producto.getNombre().equals(nombre)){
+            if (producto.getNombre().equals(nombre)) {
                 existe = true;
+                break;
             }
         }
         return existe;
@@ -232,26 +196,13 @@ public class MarketPlace implements ICrudProducto, IAutenticacion {
         }
     }
 
-    public void agregarPublicación(Publicacion newPublicacion) {
+    public void agregarPublicacion(Publicacion newPublicacion) {
         publicaciones.add(newPublicacion);
         for(Vendedor vendedor : vendedores){
             if(vendedor.getCedula().equals(newPublicacion.getVendedor().getCedula())){
                 vendedor.agregarPublicacion(newPublicacion);
             }
         }
-    }
-
-    @Override
-    public boolean iniciarSesion(UsuarioDto usuarioDto) {
-        String user = usuarioDto.user();
-        System.out.println("Verificando acceso para: " + user);
-        boolean accesoPermitido = autenticacionReal.iniciarSesion(usuarioDto);
-        if (accesoPermitido) {
-            System.out.println("Acceso permitido al vendedor: " + user);
-        } else {
-            System.out.println("Acceso denegado: El usuario no está registrado como vendedor.");
-        }
-        return accesoPermitido;
     }
 }
 

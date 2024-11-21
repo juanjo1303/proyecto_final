@@ -6,10 +6,8 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.proyecto_final.model.*;
-import co.edu.uniquindio.proyecto_final.model.builder.VendedorBuilder;
 import co.edu.uniquindio.proyecto_final.service.IModelFactoryServices;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModelFactory implements IModelFactoryServices {
@@ -54,7 +52,7 @@ public class ModelFactory implements IModelFactoryServices {
                 .apellido("Pachito")
                 .cedula("0001")
                 .direccion("La casa de el")
-                .usuario("JuanPene")
+                .usuario("Juan")
                 .contrasena("1234")
                 .build();
 
@@ -174,7 +172,7 @@ public class ModelFactory implements IModelFactoryServices {
         marketPlace.getVendedores().add(vendedor4);
         marketPlace.getVendedores().add(vendedor5);
 
-        marketPlace.agregarPublicación(publicacion);
+        marketPlace.agregarPublicacion(publicacion);
 
         return marketPlace;
     }
@@ -209,18 +207,12 @@ public class ModelFactory implements IModelFactoryServices {
 
     @Override
     public boolean verificarCedulaExistente(VendedorDto vendedor) {
-        if(marketPlace.verificarCedulaVendedor(vendedor.cedula())){
-            return true;
-        }
-        return false;
+        return marketPlace.verificarCedulaVendedor(vendedor.cedula());
     }
 
     @Override
     public boolean verificarVendedorExistente(VendedorDto vendedor) {
-        if(marketPlace.verificarUserVendedor(vendedor.usuario())){
-            return true;
-        }
-        return false;
+        return marketPlace.verificarUserVendedor(vendedor.usuario());
     }
 
     @Override
@@ -257,7 +249,7 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public void agregarPublicacion(PublicacionDto publicacionDto) {
         Publicacion newPublicacion = mapper.publicacionDtoToPublicacion(publicacionDto);
-        marketPlace.agregarPublicación(newPublicacion);
+        marketPlace.agregarPublicacion(newPublicacion);
     }
 
     @Override

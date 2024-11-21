@@ -3,8 +3,6 @@ package co.edu.uniquindio.proyecto_final.model.builder;
 import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 
-import java.awt.*;
-
 public class ProductoBuilder {
     protected String nombre;
     protected String imagen;

@@ -1,8 +1,6 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
 import java.util.*;
 
 import co.edu.uniquindio.proyecto_final.controller.AgregarProductoController;
@@ -11,12 +9,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.model.Estado;
 import co.edu.uniquindio.proyecto_final.service.Observable;
 import co.edu.uniquindio.proyecto_final.service.Observer;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -25,23 +18,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
-
-import javax.swing.*;
 
 public class AgregarProductoViewController implements Observable {
     private AgregarProductoController agregarProductoController;
-    private ProductoDto productoDto;
     private VendedorDto vendedorDto;
     private String imageUrl = "/co/edu/uniquindio/images/";
     private Set<Observer> observerSet;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button agregarButton;
@@ -86,20 +68,20 @@ public class AgregarProductoViewController implements Observable {
     }
 
     @FXML
-    void onAgregar(ActionEvent event) throws IOException {
-        if(validacionFinal(event)){
+    void onAgregar() throws IOException {
+        if(validacionFinal()){
             Stage currentStage = (Stage) agregarButton.getScene().getWindow();
             currentStage.close();
             this.notifyObservers();
         }
     }
 
-    private boolean validacionFinal(ActionEvent event) {
+    private boolean validacionFinal() {
         boolean estado = false;
-        if(camposVacios() == true){
-            if(verificarPrecio() == true){
-                if(verificarNombre() == false){
-                    productoDto = buildDtoProducto();
+        if(camposVacios()){
+            if(verificarPrecio()){
+                if(!verificarNombre()){
+                    ProductoDto productoDto = buildDtoProducto();
                     agregarProductoController.crearProducto(productoDto,vendedorDto);
                     estado = true;
                 }else {
@@ -166,20 +148,17 @@ public class AgregarProductoViewController implements Observable {
         Estado estado = cbEstado.getValue();
         String image = imageUrl;
 
-        if(nombre == "" || categoria == "" || precio == "" || estado == null || image == "/co/edu/uniquindio/images/"){
-            return false;
-        }
-        return true;
+        return !Objects.equals(nombre, "") && !Objects.equals(categoria, "") && !Objects.equals(precio, "") && estado != null && !Objects.equals(image, "/co/edu/uniquindio/images/");
     }
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) agregarButton.getScene().getWindow();
         currentStage.close();
     }
 
     @FXML
-    void onSeleccionarImagen(ActionEvent event) {
+    void onSeleccionarImagen() {
         seleccionarImagen();
     }
 
@@ -208,22 +187,6 @@ public class AgregarProductoViewController implements Observable {
         alerta.setContentText("Por favor seleccione una imagen");
         alerta.showAndWait();
     }
-
-    @FXML
-    private void loadStage(String url, Event event) {
-        try {
-            Window window = ((javafx.scene.Node) (event.getSource())).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(url));
-            Scene scene = new Scene(root);
-            Stage newStage = (Stage) window;
-            newStage.setScene(scene);
-            newStage.show();
-
-        } catch (Exception e) {
-            new Exception("Error al cambiar de escena");
-        }
-    }
-
 
     public void setVendedor(VendedorDto vendedorDto) {
         this.vendedorDto = vendedorDto;

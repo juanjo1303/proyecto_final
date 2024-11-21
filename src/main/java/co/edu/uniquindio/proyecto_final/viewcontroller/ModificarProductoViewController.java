@@ -1,22 +1,19 @@
 package co.edu.uniquindio.proyecto_final.viewcontroller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashSet;
-import java.util.ResourceBundle;
+import java.util.Objects;
 import java.util.Set;
 
 import co.edu.uniquindio.proyecto_final.controller.ModificarProductoController;
 import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.mapping.dto.VendedorDto;
 import co.edu.uniquindio.proyecto_final.model.Estado;
-import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.service.Observable;
 import co.edu.uniquindio.proyecto_final.service.Observer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -29,12 +26,6 @@ public class ModificarProductoViewController implements Observable {
     private ProductoDto selectedProduct;
     ObservableList<ProductoDto> productos = FXCollections.observableArrayList();
     private Set<Observer> observerSet;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TextField categoriaTxt;
@@ -76,13 +67,13 @@ public class ModificarProductoViewController implements Observable {
     private TableColumn<ProductoDto, String> tcPrecio;
 
     @FXML
-    void onCerrar(ActionEvent event) {
+    void onCerrar() {
         Stage currentStage = (Stage) cerrarButton.getScene().getWindow();
         currentStage.close();
     }
 
     @FXML
-    void onModificar(ActionEvent event) throws IOException {
+    void onModificar() throws IOException {
         if(verificacionFinal()){
             this.notifyObservers();
             actualizarTabla();
@@ -183,13 +174,13 @@ public class ModificarProductoViewController implements Observable {
     }
 
     private void listenerSelection() {
-        tableProducto.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectedProduct = newValue;
+        tableProducto.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {selectedProduct = newValue;
             mostrarInformacionProducto(selectedProduct);});
     }
 
     private void mostrarInformacionProducto(ProductoDto selectedProduct) {
         if(selectedProduct != null) {
-            imageProducto.setImage(new Image(getClass().getResource(selectedProduct.imagen()).toExternalForm()));
+            imageProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource(selectedProduct.imagen())).toExternalForm()));
             nombreTxt.setText(selectedProduct.nombre());
             categoriaTxt.setText(selectedProduct.categoria());
             precioTxt.setText(selectedProduct.precio());

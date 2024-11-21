@@ -6,10 +6,7 @@ import co.edu.uniquindio.proyecto_final.mapping.dto.ProductoDto;
 import co.edu.uniquindio.proyecto_final.model.Producto;
 import co.edu.uniquindio.proyecto_final.model.Publicacion;
 import co.edu.uniquindio.proyecto_final.model.Vendedor;
-import co.edu.uniquindio.proyecto_final.model.builder.ProductoBuilder;
 import co.edu.uniquindio.proyecto_final.service.IMarketPlaceMappingImplServices;
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +31,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
 
     @Override
     public VendedorDto VendedorToVendedorDto(Vendedor vendedor) {
-        VendedorDto dto = new VendedorDto(vendedor.getNombre(), vendedor.getApellido(), vendedor.getCedula(), vendedor.getDireccion(), vendedor.getUsuario(), vendedor.getContrasena());
-        return dto;
+        return new VendedorDto(vendedor.getNombre(), vendedor.getApellido(), vendedor.getCedula(), vendedor.getDireccion(), vendedor.getUsuario(), vendedor.getContrasena());
     }
 
 
@@ -50,8 +46,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMappingImplServices {
 
     @Override
     public ProductoDto ProductoToProductoDto(Producto producto) {
-        ProductoDto productoDto = new ProductoDto(producto.getNombre(), producto.getImagen() ,producto.getCategoria(),producto.getPrecio(),producto.getEstado() );
-        return productoDto;
+        return new ProductoDto(producto.getNombre(), producto.getImagen() ,producto.getCategoria(),producto.getPrecio(),producto.getEstado() );
     }
 
     @Override

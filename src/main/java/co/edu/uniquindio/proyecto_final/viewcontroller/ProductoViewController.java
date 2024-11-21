@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Objects;
+
 public class ProductoViewController {
 
     @FXML
@@ -26,7 +28,7 @@ public class ProductoViewController {
     ProductoDto producto;
 
     public void setData(ProductoDto producto) {
-        imagenProducto.setImage(new Image(getClass().getResource(producto.imagen()).toExternalForm()));
+        imagenProducto.setImage(new Image(Objects.requireNonNull(getClass().getResource(producto.imagen())).toExternalForm()));
         labelNombre.setText(producto.nombre());
         labelDescripcion.setText(producto.categoria());
         labelPrecio.setText("$" + producto.precio());
